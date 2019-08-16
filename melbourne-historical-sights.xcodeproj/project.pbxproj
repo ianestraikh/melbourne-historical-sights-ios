@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BA706D9A2306611000B6470B /* Melbourne Historical Sights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Melbourne Historical Sights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA706D9A2306611000B6470B /* melbourne-historical-sights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "melbourne-historical-sights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA706D9D2306611000B6470B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA706D9F2306611000B6470B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BA706DA22306611100B6470B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		BA706D912306611000B6470B = {
 			isa = PBXGroup;
 			children = (
-				BA706D9C2306611000B6470B /* Melbourne Historical Sights */,
+				BA706D9C2306611000B6470B /* melbourne-historical-sights */,
 				BA706D9B2306611000B6470B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,12 +46,12 @@
 		BA706D9B2306611000B6470B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BA706D9A2306611000B6470B /* Melbourne Historical Sights.app */,
+				BA706D9A2306611000B6470B /* melbourne-historical-sights.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BA706D9C2306611000B6470B /* Melbourne Historical Sights */ = {
+		BA706D9C2306611000B6470B /* melbourne-historical-sights */ = {
 			isa = PBXGroup;
 			children = (
 				BA706D9D2306611000B6470B /* AppDelegate.swift */,
@@ -61,15 +61,15 @@
 				BA706DA62306611900B6470B /* LaunchScreen.storyboard */,
 				BA706DA92306611900B6470B /* Info.plist */,
 			);
-			path = "Melbourne Historical Sights";
+			path = "melbourne-historical-sights";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BA706D992306611000B6470B /* Melbourne Historical Sights */ = {
+		BA706D992306611000B6470B /* melbourne-historical-sights */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA706DAC2306611900B6470B /* Build configuration list for PBXNativeTarget "Melbourne Historical Sights" */;
+			buildConfigurationList = BA706DAC2306611900B6470B /* Build configuration list for PBXNativeTarget "melbourne-historical-sights" */;
 			buildPhases = (
 				BA706D962306611000B6470B /* Sources */,
 				BA706D972306611000B6470B /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = "Melbourne Historical Sights";
+			name = "melbourne-historical-sights";
 			productName = "Melbourne Historical Sights";
-			productReference = BA706D9A2306611000B6470B /* Melbourne Historical Sights.app */;
+			productReference = BA706D9A2306611000B6470B /* melbourne-historical-sights.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -99,7 +99,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BA706D952306611000B6470B /* Build configuration list for PBXProject "Melbourne Historical Sights" */;
+			buildConfigurationList = BA706D952306611000B6470B /* Build configuration list for PBXProject "melbourne-historical-sights" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BA706D992306611000B6470B /* Melbourne Historical Sights */,
+				BA706D992306611000B6470B /* melbourne-historical-sights */,
 			);
 		};
 /* End PBXProject section */
@@ -283,12 +283,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Melbourne Historical Sights/Info.plist";
+				DEVELOPMENT_TEAM = 6V85PJC886;
+				INFOPLIST_FILE = "melbourne-historical-sights/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ianian.Melbourne-Historical-Sights";
+				PRODUCT_BUNDLE_IDENTIFIER = "ianian.melbourne-historical-sights";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -300,12 +301,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Melbourne Historical Sights/Info.plist";
+				DEVELOPMENT_TEAM = 6V85PJC886;
+				INFOPLIST_FILE = "melbourne-historical-sights/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ianian.Melbourne-Historical-Sights";
+				PRODUCT_BUNDLE_IDENTIFIER = "ianian.melbourne-historical-sights";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -315,7 +317,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BA706D952306611000B6470B /* Build configuration list for PBXProject "Melbourne Historical Sights" */ = {
+		BA706D952306611000B6470B /* Build configuration list for PBXProject "melbourne-historical-sights" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA706DAA2306611900B6470B /* Debug */,
@@ -324,7 +326,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA706DAC2306611900B6470B /* Build configuration list for PBXNativeTarget "Melbourne Historical Sights" */ = {
+		BA706DAC2306611900B6470B /* Build configuration list for PBXNativeTarget "melbourne-historical-sights" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA706DAD2306611900B6470B /* Debug */,
