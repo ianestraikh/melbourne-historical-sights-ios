@@ -7,17 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E93A2B02306D01100AE51C5 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93A2AF2306D01100AE51C5 /* MulticastDelegate.swift */; };
+		4E93A2B22306D31200AE51C5 /* SightsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93A2B12306D31200AE51C5 /* SightsTableViewController.swift */; };
+		4E93A2B42306D87200AE51C5 /* SightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93A2B32306D87200AE51C5 /* SightTableViewCell.swift */; };
+		4E9C182D2306BC6500D0DE72 /* MelbSights.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C182B2306BC6500D0DE72 /* MelbSights.xcdatamodeld */; };
+		4E9C18382306BF6500D0DE72 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C18372306BF6500D0DE72 /* DatabaseProtocol.swift */; };
+		4E9C183B2306C34100D0DE72 /* Sight+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C18392306C34100D0DE72 /* Sight+CoreDataClass.swift */; };
+		4E9C183C2306C34100D0DE72 /* Sight+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C183A2306C34100D0DE72 /* Sight+CoreDataProperties.swift */; };
+		4E9C18402306C6AE00D0DE72 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C183F2306C6AE00D0DE72 /* CoreDataController.swift */; };
 		BA706D9E2306611000B6470B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA706D9D2306611000B6470B /* AppDelegate.swift */; };
-		BA706DA02306611000B6470B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA706D9F2306611000B6470B /* ViewController.swift */; };
 		BA706DA32306611100B6470B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA12306611100B6470B /* Main.storyboard */; };
 		BA706DA52306611900B6470B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA42306611900B6470B /* Assets.xcassets */; };
 		BA706DA82306611900B6470B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA62306611900B6470B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E93A2AF2306D01100AE51C5 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		4E93A2B12306D31200AE51C5 /* SightsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightsTableViewController.swift; sourceTree = "<group>"; };
+		4E93A2B32306D87200AE51C5 /* SightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTableViewCell.swift; sourceTree = "<group>"; };
+		4E9C182C2306BC6500D0DE72 /* MelbSights.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MelbSights.xcdatamodel; sourceTree = "<group>"; };
+		4E9C18372306BF6500D0DE72 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		4E9C18392306C34100D0DE72 /* Sight+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sight+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4E9C183A2306C34100D0DE72 /* Sight+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sight+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4E9C183F2306C6AE00D0DE72 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		BA706D9A2306611000B6470B /* melbourne-historical-sights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "melbourne-historical-sights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA706D9D2306611000B6470B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BA706D9F2306611000B6470B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BA706DA22306611100B6470B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA706DA42306611900B6470B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA706DA72306611900B6470B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,6 +49,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E9C182A2306BB8B00D0DE72 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				4E9C18392306C34100D0DE72 /* Sight+CoreDataClass.swift */,
+				4E9C183A2306C34100D0DE72 /* Sight+CoreDataProperties.swift */,
+				4E9C182B2306BC6500D0DE72 /* MelbSights.xcdatamodeld */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		4E9C18362306BF4100D0DE72 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				4E9C18372306BF6500D0DE72 /* DatabaseProtocol.swift */,
+				4E9C183F2306C6AE00D0DE72 /* CoreDataController.swift */,
+				4E93A2AF2306D01100AE51C5 /* MulticastDelegate.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		BA706D912306611000B6470B = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +88,15 @@
 		BA706D9C2306611000B6470B /* melbourne-historical-sights */ = {
 			isa = PBXGroup;
 			children = (
+				4E9C18362306BF4100D0DE72 /* Database */,
+				4E9C182A2306BB8B00D0DE72 /* DataModel */,
 				BA706D9D2306611000B6470B /* AppDelegate.swift */,
-				BA706D9F2306611000B6470B /* ViewController.swift */,
 				BA706DA12306611100B6470B /* Main.storyboard */,
 				BA706DA42306611900B6470B /* Assets.xcassets */,
 				BA706DA62306611900B6470B /* LaunchScreen.storyboard */,
 				BA706DA92306611900B6470B /* Info.plist */,
+				4E93A2B12306D31200AE51C5 /* SightsTableViewController.swift */,
+				4E93A2B32306D87200AE51C5 /* SightTableViewCell.swift */,
 			);
 			path = "melbourne-historical-sights";
 			sourceTree = "<group>";
@@ -135,8 +172,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA706DA02306611000B6470B /* ViewController.swift in Sources */,
+				4E9C183B2306C34100D0DE72 /* Sight+CoreDataClass.swift in Sources */,
+				4E9C18382306BF6500D0DE72 /* DatabaseProtocol.swift in Sources */,
+				4E93A2B02306D01100AE51C5 /* MulticastDelegate.swift in Sources */,
+				4E93A2B22306D31200AE51C5 /* SightsTableViewController.swift in Sources */,
+				4E9C18402306C6AE00D0DE72 /* CoreDataController.swift in Sources */,
+				4E93A2B42306D87200AE51C5 /* SightTableViewCell.swift in Sources */,
 				BA706D9E2306611000B6470B /* AppDelegate.swift in Sources */,
+				4E9C182D2306BC6500D0DE72 /* MelbSights.xcdatamodeld in Sources */,
+				4E9C183C2306C34100D0DE72 /* Sight+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +380,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4E9C182B2306BC6500D0DE72 /* MelbSights.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4E9C182C2306BC6500D0DE72 /* MelbSights.xcdatamodel */,
+			);
+			currentVersion = 4E9C182C2306BC6500D0DE72 /* MelbSights.xcdatamodel */;
+			path = MelbSights.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BA706D922306611000B6470B /* Project object */;
 }
