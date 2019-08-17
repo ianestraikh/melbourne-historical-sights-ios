@@ -105,15 +105,40 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     }
     
     func createDefaultEntries() {
-        if let path = Bundle.main.path(forResource: "DefaultData", ofType: "plist") {
-            let plistArray = NSArray(contentsOfFile: path)
+        // Copy default images from Bundle to Document directory
+        guard let defaultImageUrls = Bundle.main.urls(forResourcesWithExtension: "jpg", subdirectory: "DefaultImages") else {
+            return
+        }
+        for imageUrl in defaultImageUrls {
+            do {
+                let data = try Data(contentsOf: imageUrl)
+                let filename = imageUrl.lastPathComponent
+                
+                let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+                let documentUrl = NSURL(fileURLWithPath: path)
+                
+                if let pathComponent = documentUrl.appendingPathComponent("\(filename)") {
+                    let filePath = pathComponent.path
+                    let fileManager = FileManager.default
+                    fileManager.createFile(atPath: filePath, contents: data, attributes: nil)
+                }
+            } catch {
+                print("Error: reading images")
+                return
+            }
+        }
+        
+        
+        if let defaultDataPath = Bundle.main.path(forResource: "DefaultData", ofType: "plist") {
+            let plistArray = NSArray(contentsOfFile: defaultDataPath)
             for plistDict in (plistArray as! [NSDictionary]) {
                 let name = plistDict["name"] as! String
                 let desc = plistDict["desc"] as! String
                 let lat = plistDict["latitude"] as! Double
                 let long = plistDict["longitude"] as! Double
+                let filename = plistDict["imageFilename"] as! String
                 
-                let _ = addSight(name: name, desc: desc, latitude: lat, longitude: long, imageFilename: nil)
+                let _ = addSight(name: name, desc: desc, latitude: lat, longitude: long, imageFilename: filename)
             }
         }
     }

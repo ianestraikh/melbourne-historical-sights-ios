@@ -82,6 +82,10 @@ class SightsTableViewController: UITableViewController, UISearchResultsUpdating,
         
         sightCell.nameLabel.text = sight.name
         sightCell.descLabel.text = sight.desc
+        if let imageFilename = sight.imageFilename {
+            let img = loadImageData(filename: imageFilename)
+            sightCell.imgView.image = img
+        }
         
         return sightCell
     }
@@ -93,6 +97,21 @@ class SightsTableViewController: UITableViewController, UISearchResultsUpdating,
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func loadImageData(filename: String) -> UIImage? {
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        
+        let url = NSURL(fileURLWithPath: path)
+        var image: UIImage?
+        if let pathComponent = url.appendingPathComponent(filename) {
+            let filePath = pathComponent.path
+            let fileManager = FileManager.default
+            let fileData = fileManager.contents(atPath: filePath)
+            image = UIImage(data: fileData!)
+        }
+        
+        return image
     }
 
 }
