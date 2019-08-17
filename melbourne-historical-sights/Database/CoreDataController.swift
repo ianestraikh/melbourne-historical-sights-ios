@@ -24,7 +24,12 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         }
         
         super.init()
-        if fetchAllSights().count == 0 {
+        
+        // Check if app is launched first time
+        // https://stackoverflow.com/questions/9964371/how-to-detect-first-time-app-launch-on-an-iphone
+        let defaults = UserDefaults.standard
+        if defaults.string(forKey: "isAppAlreadyLaunchedOnce") == nil {
+            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
             createDefaultEntries()
         }
     }
@@ -100,7 +105,17 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     }
     
     func createDefaultEntries() {
-        let _ = addSight(name: "St Patrick's Cathedral", desc: "Approach the mother church of the Catholic Archdiocese of Melbourne from the impressive Pilgrim Path, absorbing the tranquil sounds of running water and spiritual quotes before seeking sanctuary beneath the gargoyles and spires. Admire the splendid sacristy and chapels within, as well as the floor mosaics and brass items.", latitude: 37.8101, longitude: 144.9764, imageFilename: nil)
+        if let path = Bundle.main.path(forResource: "DefaultData", ofType: "plist") {
+            let plistArray = NSArray(contentsOfFile: path)
+            for plistDict in (plistArray as! [NSDictionary]) {
+                let name = plistDict["name"] as! String
+                let desc = plistDict["desc"] as! String
+                let lat = plistDict["latitude"] as! Double
+                let long = plistDict["longitude"] as! Double
+                
+                let _ = addSight(name: name, desc: desc, latitude: lat, longitude: long, imageFilename: nil)
+            }
+        }
     }
 }
 

@@ -19,6 +19,8 @@
 		BA706DA32306611100B6470B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA12306611100B6470B /* Main.storyboard */; };
 		BA706DA52306611900B6470B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA42306611900B6470B /* Assets.xcassets */; };
 		BA706DA82306611900B6470B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA62306611900B6470B /* LaunchScreen.storyboard */; };
+		BADC7D0F23078DA70086CFB3 /* DefaultData.plist in Resources */ = {isa = PBXBuildFile; fileRef = BADC7D0E23078DA70086CFB3 /* DefaultData.plist */; };
+		BADC7D122307A0B90086CFB3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADC7D112307A0B90086CFB3 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		BA706DA42306611900B6470B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA706DA72306611900B6470B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA706DA92306611900B6470B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BADC7D0E23078DA70086CFB3 /* DefaultData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultData.plist; sourceTree = "<group>"; };
+		BADC7D112307A0B90086CFB3 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 				4E9C18372306BF6500D0DE72 /* DatabaseProtocol.swift */,
 				4E9C183F2306C6AE00D0DE72 /* CoreDataController.swift */,
 				4E93A2AF2306D01100AE51C5 /* MulticastDelegate.swift */,
+				BADC7D0E23078DA70086CFB3 /* DefaultData.plist */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -97,6 +102,7 @@
 				BA706DA92306611900B6470B /* Info.plist */,
 				4E93A2B12306D31200AE51C5 /* SightsTableViewController.swift */,
 				4E93A2B32306D87200AE51C5 /* SightTableViewCell.swift */,
+				BADC7D112307A0B90086CFB3 /* MapViewController.swift */,
 			);
 			path = "melbourne-historical-sights";
 			sourceTree = "<group>";
@@ -161,6 +167,7 @@
 			files = (
 				BA706DA82306611900B6470B /* LaunchScreen.storyboard in Resources */,
 				BA706DA52306611900B6470B /* Assets.xcassets in Resources */,
+				BADC7D0F23078DA70086CFB3 /* DefaultData.plist in Resources */,
 				BA706DA32306611100B6470B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,6 +182,7 @@
 				4E9C183B2306C34100D0DE72 /* Sight+CoreDataClass.swift in Sources */,
 				4E9C18382306BF6500D0DE72 /* DatabaseProtocol.swift in Sources */,
 				4E93A2B02306D01100AE51C5 /* MulticastDelegate.swift in Sources */,
+				BADC7D122307A0B90086CFB3 /* MapViewController.swift in Sources */,
 				4E93A2B22306D31200AE51C5 /* SightsTableViewController.swift in Sources */,
 				4E9C18402306C6AE00D0DE72 /* CoreDataController.swift in Sources */,
 				4E93A2B42306D87200AE51C5 /* SightTableViewCell.swift in Sources */,

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>St Patrick&apos;s Cathedral</string>
+		<key>desc</key>
+		<string>Approach the mother church of the Catholic Archdiocese of Melbourne from the impressive Pilgrim Path, absorbing the tranquil sounds of running water and spiritual quotes before seeking sanctuary beneath the gargoyles and spires. Admire the splendid sacristy and chapels within, as well as the floor mosaics and brass items.</string>
+		<key>latitude</key>
+		<real>-37.8101</real>
+		<key>longitude</key>
+		<real>144.9764</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Flinders Street Station</string>
+		<key>desc</key>
+		<string>Stand beneath the clocks of Melbourne&apos;s iconic railway station, as tourists and Melburnians have done for generations. Take a train for outer-Melbourne explorations, join a tour to learn more about the history of the grand building, or go underneath the station to see the changing exhibitions that line Campbell Arcade.</string>
+		<key>latitude</key>
+		<real>-37.8183</real>
+		<key>longitude</key>
+		<real>144.9671</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>The Scots&apos; Church</string>
+		<key>desc</key>
+		<string>Look up to admire the 120-foot spire of the historic Scots&apos; Church, once the highest point of the city skyline. Nestled between modern buildings on Russell and Collins streets, the decorated Gothic architecture and stonework is an impressive sight, as is the interior&apos;s timber panelling and stained glass. Trivia buffs, take note: the church was built by David Mitchell, father of Dame Nellie Melba (once a church chorister).</string>
+		<key>latitude</key>
+		<real>-37.8146</real>
+		<key>longitude</key>
+		<real>144.9685</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>St Paul&apos;s Cathedral</string>
+		<key>desc</key>
+		<string>Leave the bustling Flinders Street Station intersection behind and enter the peaceful place of worship that&apos;s been at the heart of city life since the mid 1800s. Join a tour and admire the magnificent organ, the Persian Tile and the Five Pointed Star of the historic St Paul&apos;s Cathedral.</string>
+		<key>latitude</key>
+		<real>-37.817</real>
+		<key>longitude</key>
+		<real>144.9677</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>St Michael&apos;s Uniting Church</string>
+		<key>desc</key>
+		<string>St Michael&apos;s is a unique church in the heart of the city. It is not only unique for its relevant, contemporary preaching, but for its unusual architecture.
+
+St Michael&apos;s strives to be the best possible model of what the New Faith can be; they want to attract and sustain larger numbers of people who see that this expression of church life is the most meaningful and worthwhile experience for them.
+
+It is a place which affirms and encourages the best expression of who you are and who you can be, through relevant theology, Sunday Service, numerous support programs and its commitment to counselling and psychotherapy.
+
+For further information please contact St Michael&apos;s Uniting Church or view their website.</string>
+		<key>latitude</key>
+		<real>-37.813309</real>
+		<key>longitude</key>
+		<real>144.969442</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Shrine of Remembrance</string>
+		<key>desc</key>
+		<string>The Shrine of Remembrance is a building with a soul. Opened in 1934, the Shrine is the Victorian state memorial to Australians who served in global conflicts throughout our nation’s history. Inspired by Classical architecture, the Shrine was designed and built by veterans of the First World War.
+
+Renowned for its architecture the Shrine offers a multi-layered journey rich in meaning and symbology. Set in an elevated position as the centrepiece of the sprawling park lands at the southern end of the city’s cultural precinct, the Shrine provides unrivalled, panoramic views of Melbourne.
+
+A Ray of Light traces its path across the commemorative stone every half hour as it does naturally at 11am on the 11th day of the 11th month each year. Beneath the inner sanctum a labyrinth of galleries unfolds, featuring over 800 artworks, historical artefacts and the personal effects of Australians at war.
+
+Special exhibitions and events are held throughout the year providing an ever changing experience. For a unique insight into this special place, Shrine tours are available daily from the Visitor Centre at 11:00am and 12:45pm.</string>
+		<key>latitude</key>
+		<real>-37.831078</real>
+		<key>longitude</key>
+		<real>144.976697</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Trades Hall</string>
+		<key>desc</key>
+		<string>Established in 1859 as a meeting hall and a place to educate workers and their families - Trades Hall is still home to trade unions and political events - but has grown to embrace a diverse cultural focus. It&apos;s now a regular venue for theatre, art exhibitions, Melbourne International Comedy Festival and Melbourne Fringe Festival.
+
+The original timber structure was built with funds raised by the workers&apos; union movement, on a plot of donated government land. The Trades Hall and Literary Institute, as it was then known, was later rebuilt (1875) by John Reed, the architect also known for Melbourne&apos;s iconic Town Hall and the State Library of Victoria.
+
+The gold Eight Hour Day monument across the road commemorates workers who successfully campaigned to win the world&apos;s first eight-hour working day for Victoria&apos;s workforce.</string>
+		<key>latitude</key>
+		<real>-37.806656</real>
+		<key>longitude</key>
+		<real>144.966222</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>The Forum</string>
+		<key>desc</key>
+		<string>Catch local stars and international artists at one of the country&apos;s most spectacular venues. The Forum&apos;s impressive neo-gothic facade (complete with gargoyles) and ornate interior design add an enchanting edge to any gig. Hear blues, country, indie and rock acts, and catch theatre and comedy under the beautiful blue sky ceiling.  </string>
+		<key>latitude</key>
+		<real>-37.816595</real>
+		<key>longitude</key>
+		<real>144.969579</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Royal Exhibition Building</string>
+		<key>desc</key>
+		<string>North of the city centre, the majestic Royal Exhibition Building is surrounded by Carlton Gardens.
+
+The building is one of the world&apos;s oldest remaining exhibition pavilions and was originally built for the Great Exhibition of 1880. Later it housed the first Commonwealth Parliament from 1901, and was the first building in Australia to achieve a World Heritage listing in 2004.
+
+With a meticulously restored interior, expansive galleries and soaring dome, the Royal Exhibition Building&apos;s Great Hall continues to be an impressive setting for trade shows, fairs, cultural and community events. The International Flower and Garden Show are held here annually.
+
+Tours of the Royal Exhibition Building depart from Melbourne Museum. Contact Melbourne Museum for further details on 13 11 02.</string>
+		<key>latitude</key>
+		<real>-37.804585</real>
+		<key>longitude</key>
+		<real>144.971654</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>The Ian Potter Museum of Art</string>
+		<key>desc</key>
+		<string>Founded in 1972, the Ian Potter Museum of Art is the University of Melbourne&apos;s art museum. Housed in an award-winning building opened in 1998, the Potter is the largest university-based art museum in Australia and a national leader in the field. 
+
+The Potter manages the University Art Collection, a rich resource of art and artefacts spanning neolithic to contemporary. A cultural and educational facility, The Potter serves both the campus community and the general public. 
+
+Embracing research, discovery and debate, The Potter exhibits art from antiquity to the present, from the University Art Collection, as well as from public and private collections from around Australia and the world. Working with living artists, the museum participates directly in the development of contemporary art. Public programs, publications, and social media encourage engagement, learning and the exchange of ideas.
+</string>
+		<key>latitude</key>
+		<real>-37.797713</real>
+		<key>longitude</key>
+		<real>144.96526</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Old Melbourne Gaol</string>
+		<key>desc</key>
+		<string>The Old Melbourne Gaol is a museum on Russell Street, in Melbourne, Victoria, Australia. It consists of a bluestone building and courtyard, and is located next to the old City Police Watch House and City Courts buildings.</string>
+		<key>latitude</key>
+		<real>-37.8078</real>
+		<key>longitude</key>
+		<real>144.9653</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Parliament House</string>
+		<key>desc</key>
+		<string>Parliament House is the meeting place of the Parliament of Victoria, one of the parliaments of the Australian states and territories. Located on Spring Street on the edge of the central city grid, the grand colonnaded front dominates the vista up Bourke Street.</string>
+		<key>latitude</key>
+		<real>-37.811</real>
+		<key>longitude</key>
+		<real>144.9738</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Melbourne Town Hall</string>
+		<key>desc</key>
+		<string>Melbourne Town Hall is the central City and town hall, and is a historic building that has been there since 1867, Australia, in the State of Victoria. It is located on the northeast corner of Swanston and Collins Streets, in the central business district.</string>
+		<key>latitude</key>
+		<real>-37.815</real>
+		<key>longitude</key>
+		<real>144.9669</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Cooks&apos; Cottage</string>
+		<key>desc</key>
+		<string>Cooks&apos; Cottage, previously known as Captain Cook&apos;s Cottage, is located in the Fitzroy Gardens, Melbourne, Australia.</string>
+		<key>latitude</key>
+		<real>-37.814522</real>
+		<key>longitude</key>
+		<real>144.979442</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Manchester Unity Building</string>
+		<key>desc</key>
+		<string>The Manchester Unity Building is an Art Deco Gothic inspired office and retail building in Melbourne, Australia, constructed in 1931-32 for the Manchester Unity Independent Order of Oddfellows. The soaring stepped corner tower on a prominent intersection opposite the Melbourne Town Hall makes it one of the most prominent and best known buildings in Melbourne.</string>
+		<key>latitude</key>
+		<real>-37.8154</real>
+		<key>longitude</key>
+		<real>144.9663</real>
+	</dict>
+</array>
+</plist>
