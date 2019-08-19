@@ -52,21 +52,21 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
             sight.imageFilename = imageFilename
         }
         // This less efficient than batching changes and saving once at end.
-        saveContext()
+        //saveContext()
         return sight
     }
     
     func addImageFilenameToSight(imageFilename: String, sight: Sight) -> Bool {
         sight.imageFilename = imageFilename
         // This less efficient than batching changes and saving once at end.
-        saveContext()
+        //saveContext()
         return true
     }
     
     func deleteSight(sight: Sight) {
         persistantContainer.viewContext.delete(sight)
         // This less efficient than batching changes and saving once at end.
-        saveContext()
+        //saveContext()
     }
 
     
@@ -75,7 +75,9 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         listener.onSightListChange(change: .update, sights: fetchAllSights())
     }
     
+    // MARK: - Add saveContext()
     func removeListener(listener: DatabaseListener) {
+        saveContext()
         listeners.removeDelegate(listener)
     }
     

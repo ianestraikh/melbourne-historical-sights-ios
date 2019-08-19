@@ -73,19 +73,21 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fLG-uL-2aP">
-                                            <rect key="frame" x="8" y="8" width="91.5" height="83.5"/>
+                                            <rect key="frame" x="8" y="8" width="98" height="90"/>
                                             <constraints>
+                                                <constraint firstAttribute="width" constant="90" id="2zm-Lb-OWV"/>
                                                 <constraint firstAttribute="width" secondItem="fLG-uL-2aP" secondAttribute="height" multiplier="1:1" constant="8" id="NcX-Rn-dDm"/>
+                                                <constraint firstAttribute="height" constant="90" id="lRG-59-3yk"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWH-xu-DWw">
-                                            <rect key="frame" x="115.5" y="16" width="227.5" height="21"/>
+                                            <rect key="frame" x="122" y="16" width="221" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h42-rn-VRU">
-                                            <rect key="frame" x="115.5" y="41" width="227.5" height="32"/>
+                                            <rect key="frame" x="122" y="41" width="221" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -123,10 +125,44 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="5hK-JY-LFh" kind="show" identifier="sightSegue" id="aCb-5d-QAw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Vh-pj-Reo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1538" y="-564"/>
+        </scene>
+        <!--Sight View Controller-->
+        <scene sceneID="jtd-U7-Zjh">
+            <objects>
+                <viewController id="5hK-JY-LFh" customClass="SightViewController" customModule="melbourne_historical_sights" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dXn-8l-DdJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="twq-Xr-Tkz">
+                                <rect key="frame" x="0.0" y="64" width="375" height="166"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="twq-Xr-Tkz" secondAttribute="height" multiplier="375:166" id="mbe-ay-cbr"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="twq-Xr-Tkz" firstAttribute="leading" secondItem="XvA-uP-ZNr" secondAttribute="leading" id="2qt-4b-WWX"/>
+                            <constraint firstItem="XvA-uP-ZNr" firstAttribute="trailing" secondItem="twq-Xr-Tkz" secondAttribute="trailing" id="f1k-bs-mTB"/>
+                            <constraint firstItem="twq-Xr-Tkz" firstAttribute="top" secondItem="XvA-uP-ZNr" secondAttribute="top" id="gz7-ZQ-zE5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XvA-uP-ZNr"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="twq-Xr-Tkz" id="2wx-MR-GZZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="72x-kE-ZNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1536.8" y="149.77511244377811"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="QZy-Me-Lxx">
