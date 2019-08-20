@@ -51,6 +51,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         if let imageFilename = imageFilename {
             sight.imageFilename = imageFilename
         }
+        sight.latitude = latitude
+        sight.longitude = longitude
         // This less efficient than batching changes and saving once at end.
         //saveContext()
         return sight
@@ -137,10 +139,10 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
                 let name = plistDict["name"] as! String
                 let desc = plistDict["desc"] as! String
                 let lat = plistDict["latitude"] as! Double
-                let long = plistDict["longitude"] as! Double
+                let lon = plistDict["longitude"] as! Double
                 let filename = plistDict["imageFilename"] as! String
                 
-                let _ = addSight(name: name, desc: desc, latitude: lat, longitude: long, imageFilename: filename)
+                let _ = addSight(name: name, desc: desc, latitude: lat, longitude: lon, imageFilename: filename)
             }
         }
     }
