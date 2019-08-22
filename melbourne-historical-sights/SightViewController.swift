@@ -11,10 +11,11 @@ import MapKit
 
 class SightViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
-    weak var sight: Sight?
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var desc: UILabel!
+    @IBOutlet weak var desc: UITextView!
     @IBOutlet weak var location: UILabel!
+    
+    weak var sight: Sight?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +28,23 @@ class SightViewController: UIViewController {
         
         self.name.text = sight!.name
         self.desc.text = sight!.desc
+        // Set margin/padding to zero for text view
+        self.desc.textContainer.lineFragmentPadding = 0
+        self.desc.textContainerInset = .zero
         
         getAddressFromLatLon(lat: sight!.latitude, lon: sight!.longitude)
     }
     
+    @IBAction func editSight(_ sender: Any) {
+        performSegue(withIdentifier: "editSightSegue", sender: sight)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editSightSegue" {
+            let destination = segue.destination as! AddEditSightViewController
+            destination.sight = sender as? Sight
+        }
+    }
 
     /*
     // MARK: - Navigation
