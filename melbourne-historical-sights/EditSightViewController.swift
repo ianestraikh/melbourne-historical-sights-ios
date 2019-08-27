@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddEditSightViewController: UIViewController {
+class EditSightViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
@@ -38,6 +38,16 @@ class AddEditSightViewController: UIViewController {
     }
     
     @IBAction func takePhoto(_ sender: Any) {
+        let controller = UIImagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            controller.sourceType = .camera
+        } else {
+            controller.sourceType = .photoLibrary
+        }
+        
+        controller.allowsEditing = false
+        controller.delegate = self
+        self.present(controller, animated: true, completion: nil)
     }
     
     @IBAction func setLocation(_ sender: Any) {
@@ -46,7 +56,23 @@ class AddEditSightViewController: UIViewController {
     @IBAction func saveSight(_ sender: Any) {
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[.originalImage] as? UIImage {
+            imageView.image = pickedImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        displayMessage("There was an error in getting the image", "Error", picker)
+    }
+    
+    // TODO: when the cancel button is clicked at imagePickerController the message appears, but the window is not being canceled
+    func displayMessage(_ message: String,_ title: String, _ obj: UIViewController) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+        obj.present(alertController, animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

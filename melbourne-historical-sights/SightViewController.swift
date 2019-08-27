@@ -41,7 +41,7 @@ class SightViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editSightSegue" {
-            let destination = segue.destination as! AddEditSightViewController
+            let destination = segue.destination as! EditSightViewController
             destination.sight = sender as? Sight
         }
     }
