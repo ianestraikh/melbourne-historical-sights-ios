@@ -12,6 +12,7 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     weak var sight: Sight?
     
@@ -35,6 +36,27 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
         descTextView.layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
         descTextView.layer.borderWidth = 0.5
         descTextView.clipsToBounds = true
+        
+        // Prevent keyboard overlapping text field
+        // https://stackoverflow.com/questions/26689232/scrollview-and-keyboard-swift/50829480
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    // https://stackoverflow.com/questions/26689232/scrollview-and-keyboard-swift/50829480
+    @objc func keyboardWillShow(notification:NSNotification){
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        scrollView.contentInset = contentInset
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification){
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
     }
     
     @IBAction func takePhoto(_ sender: Any) {
@@ -64,7 +86,7 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        displayMessage("There was an error in getting the image", "Error", picker)
+        //displayMessage("There was an error in getting the image", "Error", picker)
     }
     
     // TODO: when the cancel button is clicked at imagePickerController the message appears, but the window is not being canceled

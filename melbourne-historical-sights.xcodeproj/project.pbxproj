@@ -16,6 +16,7 @@
 		4E9C183C2306C34100D0DE72 /* Sight+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C183A2306C34100D0DE72 /* Sight+CoreDataProperties.swift */; };
 		4E9C18402306C6AE00D0DE72 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C183F2306C6AE00D0DE72 /* CoreDataController.swift */; };
 		4EC264592307F08100C6F98A /* DefaultImages in Resources */ = {isa = PBXBuildFile; fileRef = 4EC264582307F08100C6F98A /* DefaultImages */; };
+		BA36479B2315241B0045D67F /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA36479A2315241B0045D67F /* LocationAnnotation.swift */; };
 		BA706D9E2306611000B6470B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA706D9D2306611000B6470B /* AppDelegate.swift */; };
 		BA706DA32306611100B6470B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA12306611100B6470B /* Main.storyboard */; };
 		BA706DA52306611900B6470B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA42306611900B6470B /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		4E9C183A2306C34100D0DE72 /* Sight+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sight+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E9C183F2306C6AE00D0DE72 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		4EC264582307F08100C6F98A /* DefaultImages */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DefaultImages; path = "melbourne-historical-sights/DefaultImages"; sourceTree = SOURCE_ROOT; };
+		BA36479A2315241B0045D67F /* LocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 		BA706D9A2306611000B6470B /* melbourne-historical-sights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "melbourne-historical-sights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA706D9D2306611000B6470B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA706DA22306611100B6470B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				BA786BAA230A9E9E0039200B /* SightViewController.swift */,
 				BA786BAC230AA71E0039200B /* Util.swift */,
 				BAFB670E230E55BB00F220BD /* EditSightViewController.swift */,
+				BA36479A2315241B0045D67F /* LocationAnnotation.swift */,
 			);
 			path = "melbourne-historical-sights";
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				4E93A2B42306D87200AE51C5 /* SightTableViewCell.swift in Sources */,
 				BA706D9E2306611000B6470B /* AppDelegate.swift in Sources */,
 				BAFB670F230E55BB00F220BD /* EditSightViewController.swift in Sources */,
+				BA36479B2315241B0045D67F /* LocationAnnotation.swift in Sources */,
 				4E9C182D2306BC6500D0DE72 /* MelbSights.xcdatamodeld in Sources */,
 				4E9C183C2306C34100D0DE72 /* Sight+CoreDataProperties.swift in Sources */,
 			);
