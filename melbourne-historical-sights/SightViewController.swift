@@ -12,8 +12,9 @@ import MapKit
 class SightViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var desc: UITextView!
+    @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     weak var sight: Sight?
     
@@ -28,11 +29,9 @@ class SightViewController: UIViewController {
         
         self.name.text = sight!.name
         self.desc.text = sight!.desc
-        // Set margin/padding to zero for text view
-        self.desc.textContainer.lineFragmentPadding = 0
-        self.desc.textContainerInset = .zero
-        
+          
         getAddressFromLatLon(lat: sight!.latitude, lon: sight!.longitude)
+        
     }
     
     @IBAction func editSight(_ sender: Any) {
