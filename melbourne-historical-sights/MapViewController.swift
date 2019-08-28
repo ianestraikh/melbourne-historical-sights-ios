@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, DatabaseListener {
+class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -21,7 +21,14 @@ class MapViewController: UIViewController, DatabaseListener {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
-
+        
+        
+        let zoomRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: -37.8136, longitude: 144.9631), latitudinalMeters: 4000, longitudinalMeters: 4000)
+        mapView.setRegion(mapView.regionThatFits(zoomRegion), animated: false)
+        
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(LocationAnnotation.self))
+        mapView.delegate = self
+        
         // Do any additional setup after loading the view.
     }
     
@@ -61,19 +68,50 @@ class MapViewController: UIViewController, DatabaseListener {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sightsSegue" {
-            let destination = segue.destination as! SightsTableViewController
-            //destination.delegate = self
+//            let destination = segue.destination as! SightsTableViewController
+//            destination.delegate = self
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // https://developer.apple.com/documentation/mapkit/mapkit_annotations/annotating_a_map_with_custom_data
+    /// The map view asks `mapView(_:viewFor:)` for an appropiate annotation view for a specific annotation.
+    /// - Tag: CreateAnnotationViews
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        guard !annotation.isKind(of: MKUserLocation.self) else {
+            // Make a fast exit if the annotation is the `MKUserLocation`, as it's not an annotation view we wish to customize.
+            return nil
+        }
+        
+        var annotationView: MKAnnotationView?
+        
+        if let annotation = annotation as? LocationAnnotation {
+            annotationView = setupLocationAnnotationView(for: annotation, on: mapView)
+        }
+        
+        return annotationView
     }
-    */
-
+    
+    // https://developer.apple.com/documentation/mapkit/mapkit_annotations/annotating_a_map_with_custom_data
+    /// Create an annotation view for the Location, and add an image to the callout.
+    /// - Tag: CalloutImage
+    private func setupLocationAnnotationView(for annotation: LocationAnnotation, on mapView: MKMapView) -> MKAnnotationView {
+        let identifier = NSStringFromClass(LocationAnnotation.self)
+        let view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier, for: annotation)
+        if let markerAnnotationView = view as? MKMarkerAnnotationView {
+            markerAnnotationView.animatesWhenAdded = true
+            markerAnnotationView.canShowCallout = true
+            markerAnnotationView.markerTintColor = UIColor.blue
+            
+            // Provide an image view to use as the accessory view's detail view.
+            let img = loadImageData(filename: annotation.imageFilename!)
+            let imgView = UIImageView(image: img)
+            // Make image view size 100x100
+            imgView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+            imgView.contentMode = .scaleAspectFill
+            markerAnnotationView.detailCalloutAccessoryView = UIImageView(image: img)
+        }
+        
+        return view
+    }
 }

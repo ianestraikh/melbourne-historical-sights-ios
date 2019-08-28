@@ -11,14 +11,17 @@ import MapKit
 
 class LocationAnnotation: NSObject, MKAnnotation  {
     
-    var coordinate: CLLocationCoordinate2D
+    @objc dynamic var coordinate = CLLocationCoordinate2D()
     var title: String?
     var subtitle: String?
+    
+    var imageFilename: String?
     
     init(sight: Sight) {
         self.title = sight.name
         self.subtitle = sight.desc
         coordinate = CLLocationCoordinate2D(latitude: sight.latitude, longitude: sight.longitude)
+        self.imageFilename = sight.imageFilename
     }
 
 }
