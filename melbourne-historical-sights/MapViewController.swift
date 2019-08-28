@@ -107,9 +107,12 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
             let img = loadImageData(filename: annotation.imageFilename!)
             let imgView = UIImageView(image: img)
             // Make image view size 100x100
-            imgView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+            let widthConstraint = NSLayoutConstraint(item: imgView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
+            let heightConstraint = NSLayoutConstraint(item: imgView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
+            imgView.addConstraints([widthConstraint, heightConstraint])
             imgView.contentMode = .scaleAspectFill
-            markerAnnotationView.detailCalloutAccessoryView = UIImageView(image: img)
+            
+            markerAnnotationView.detailCalloutAccessoryView = imgView
         }
         
         return view
