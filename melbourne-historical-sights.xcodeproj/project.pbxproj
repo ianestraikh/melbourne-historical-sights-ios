@@ -16,12 +16,11 @@
 		4E9C183C2306C34100D0DE72 /* Sight+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C183A2306C34100D0DE72 /* Sight+CoreDataProperties.swift */; };
 		4E9C18402306C6AE00D0DE72 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C183F2306C6AE00D0DE72 /* CoreDataController.swift */; };
 		4EC264592307F08100C6F98A /* DefaultImages in Resources */ = {isa = PBXBuildFile; fileRef = 4EC264582307F08100C6F98A /* DefaultImages */; };
-		BA36479B2315241B0045D67F /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA36479A2315241B0045D67F /* LocationAnnotation.swift */; };
 		BA706D9E2306611000B6470B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA706D9D2306611000B6470B /* AppDelegate.swift */; };
 		BA706DA32306611100B6470B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA12306611100B6470B /* Main.storyboard */; };
 		BA706DA52306611900B6470B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA42306611900B6470B /* Assets.xcassets */; };
 		BA706DA82306611900B6470B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA62306611900B6470B /* LaunchScreen.storyboard */; };
-		BA786BAB230A9E9E0039200B /* SightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA786BAA230A9E9E0039200B /* SightViewController.swift */; };
+		BA786BAB230A9E9E0039200B /* SightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA786BAA230A9E9E0039200B /* SightDetailViewController.swift */; };
 		BA786BAD230AA71E0039200B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA786BAC230AA71E0039200B /* Util.swift */; };
 		BADC7D0F23078DA70086CFB3 /* DefaultData.plist in Resources */ = {isa = PBXBuildFile; fileRef = BADC7D0E23078DA70086CFB3 /* DefaultData.plist */; };
 		BADC7D122307A0B90086CFB3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADC7D112307A0B90086CFB3 /* MapViewController.swift */; };
@@ -38,14 +37,13 @@
 		4E9C183A2306C34100D0DE72 /* Sight+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sight+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E9C183F2306C6AE00D0DE72 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		4EC264582307F08100C6F98A /* DefaultImages */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DefaultImages; path = "melbourne-historical-sights/DefaultImages"; sourceTree = SOURCE_ROOT; };
-		BA36479A2315241B0045D67F /* LocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 		BA706D9A2306611000B6470B /* melbourne-historical-sights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "melbourne-historical-sights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA706D9D2306611000B6470B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA706DA22306611100B6470B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA706DA42306611900B6470B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA706DA72306611900B6470B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA706DA92306611900B6470B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA786BAA230A9E9E0039200B /* SightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightViewController.swift; sourceTree = "<group>"; };
+		BA786BAA230A9E9E0039200B /* SightDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightDetailViewController.swift; sourceTree = "<group>"; };
 		BA786BAC230AA71E0039200B /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		BADC7D0E23078DA70086CFB3 /* DefaultData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultData.plist; sourceTree = "<group>"; };
 		BADC7D112307A0B90086CFB3 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -114,10 +112,9 @@
 				4E93A2B12306D31200AE51C5 /* SightsTableViewController.swift */,
 				4E93A2B32306D87200AE51C5 /* SightTableViewCell.swift */,
 				BADC7D112307A0B90086CFB3 /* MapViewController.swift */,
-				BA786BAA230A9E9E0039200B /* SightViewController.swift */,
+				BA786BAA230A9E9E0039200B /* SightDetailViewController.swift */,
 				BA786BAC230AA71E0039200B /* Util.swift */,
 				BAFB670E230E55BB00F220BD /* EditSightViewController.swift */,
-				BA36479A2315241B0045D67F /* LocationAnnotation.swift */,
 			);
 			path = "melbourne-historical-sights";
 			sourceTree = "<group>";
@@ -198,7 +195,7 @@
 				4E9C183B2306C34100D0DE72 /* Sight+CoreDataClass.swift in Sources */,
 				4E9C18382306BF6500D0DE72 /* DatabaseProtocol.swift in Sources */,
 				4E93A2B02306D01100AE51C5 /* MulticastDelegate.swift in Sources */,
-				BA786BAB230A9E9E0039200B /* SightViewController.swift in Sources */,
+				BA786BAB230A9E9E0039200B /* SightDetailViewController.swift in Sources */,
 				BADC7D122307A0B90086CFB3 /* MapViewController.swift in Sources */,
 				4E93A2B22306D31200AE51C5 /* SightsTableViewController.swift in Sources */,
 				4E9C18402306C6AE00D0DE72 /* CoreDataController.swift in Sources */,
@@ -206,7 +203,6 @@
 				4E93A2B42306D87200AE51C5 /* SightTableViewCell.swift in Sources */,
 				BA706D9E2306611000B6470B /* AppDelegate.swift in Sources */,
 				BAFB670F230E55BB00F220BD /* EditSightViewController.swift in Sources */,
-				BA36479B2315241B0045D67F /* LocationAnnotation.swift in Sources */,
 				4E9C182D2306BC6500D0DE72 /* MelbSights.xcdatamodeld in Sources */,
 				4E9C183C2306C34100D0DE72 /* Sight+CoreDataProperties.swift in Sources */,
 			);

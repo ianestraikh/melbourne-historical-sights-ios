@@ -14,6 +14,7 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     var sights: [Sight] = []
+    var sightToFocus: Sight?
     weak var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
@@ -26,22 +27,25 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         let zoomRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: -37.8136, longitude: 144.9631), latitudinalMeters: 4000, longitudinalMeters: 4000)
         mapView.setRegion(mapView.regionThatFits(zoomRegion), animated: false)
         
-        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(LocationAnnotation.self))
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(Sight.self))
         mapView.delegate = self
         
-        // Do any additional setup after loading the view.
     }
     
-    @IBAction func sights(_ sender: Any) {
+    @IBAction func showSightsTable(_ sender: Any) {
         performSegue(withIdentifier: "sightsSegue", sender: self)
     }
     
     
     func focusOn(annotation: MKAnnotation) {
-        mapView.selectAnnotation(annotation, animated: true)
+        for annotaion in mapView.selectedAnnotations {
+            mapView.deselectAnnotation(annotaion, animated: false)
+        }
         
         let zoomRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         mapView.setRegion(mapView.regionThatFits(zoomRegion), animated: true)
+        
+        mapView.selectAnnotation(annotation, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,22 +60,26 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         databaseController?.removeListener(listener: self)
     }
     
+    // Update annotations every time sight list change
     func onSightListChange(change: DatabaseChange, sights: [Sight]) {
-        self.sights = sights
-        
         mapView.removeAnnotations(mapView.annotations)
-        for sight in sights {
-            let location = LocationAnnotation(sight: sight)
-            mapView.addAnnotation(location)
+        
+        self.sights = sights
+        mapView.addAnnotations(sights)
+        
+        if sightToFocus != nil {
+            focusOn(annotation: sightToFocus!)
+            sightToFocus = nil
         }
     }
        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sightDetailSegue" {
-            let destination = segue.destination as! SightViewController
+            let destination = segue.destination as! SightDetailViewController
             destination.sight = sender as? Sight
         } else if segue.identifier == "sightsSegue" {
-            
+            let destination = segue.destination as! SightsTableViewController
+            destination.mapViewController = self
         }
     }
     
@@ -80,8 +88,8 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         // This illustrates how to detect which annotation type was tapped on for its callout.
-        if let annotation = view.annotation as! LocationAnnotation? {
-            performSegue(withIdentifier: "sightDetailSegue", sender: annotation.sight)
+        if let annotation = view.annotation as! Sight? {
+            performSegue(withIdentifier: "sightDetailSegue", sender: annotation)
         }
     }
     
@@ -97,7 +105,7 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         
         var annotationView: MKAnnotationView?
         
-        if let annotation = annotation as? LocationAnnotation {
+        if let annotation = annotation as? Sight {
             annotationView = setupLocationAnnotationView(for: annotation, on: mapView)
         }
         
@@ -106,8 +114,8 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
     
     // https://developer.apple.com/documentation/mapkit/mapkit_annotations/annotating_a_map_with_custom_data
     /// Create an annotation view for the Location, and add an image and desc to the callout.
-    private func setupLocationAnnotationView(for annotation: LocationAnnotation, on mapView: MKMapView) -> MKAnnotationView {
-        let identifier = NSStringFromClass(LocationAnnotation.self)
+    private func setupLocationAnnotationView(for annotation: Sight, on mapView: MKMapView) -> MKAnnotationView {
+        let identifier = NSStringFromClass(Sight.self)
         let view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier, for: annotation)
         if let markerAnnotationView = view as? MKMarkerAnnotationView {
             markerAnnotationView.animatesWhenAdded = true
@@ -127,7 +135,7 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
             
             let descLabel: UILabel = {
                 let label = UILabel(frame: .zero)
-                label.text = annotation.subtitle
+                label.text = annotation.desc
                 label.numberOfLines = 5
                 label.font = UIFont.preferredFont(forTextStyle: .caption1)
                 let widthConstraint = NSLayoutConstraint(item: label, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: CGFloat(1), constant: CGFloat(200))

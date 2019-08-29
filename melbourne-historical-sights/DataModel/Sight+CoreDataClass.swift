@@ -9,8 +9,17 @@
 
 import Foundation
 import CoreData
+import MapKit
 
 @objc(Sight)
-public class Sight: NSManagedObject {
-
+public class Sight: NSManagedObject, MKAnnotation {
+    public var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude as Double)
+    }
+    
+    public var title: String? {
+        return self.name
+    }
+    
+    public var subtitle: String?
 }

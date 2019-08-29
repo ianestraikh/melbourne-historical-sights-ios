@@ -34,7 +34,7 @@
                     <navigationItem key="navigationItem" title="Map" id="9CD-jI-Rmg">
                         <barButtonItem key="rightBarButtonItem" title="Sights" id="kVA-JR-cKq">
                             <connections>
-                                <action selector="sights:" destination="BYZ-38-t0r" id="t7D-xF-QSy"/>
+                                <action selector="showSightsTable:" destination="BYZ-38-t0r" id="t7D-xF-QSy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -57,29 +57,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sightCell" rowHeight="100" id="nlp-gi-dOu" customClass="SightTableViewCell" customModule="melbourne_historical_sights" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sightCell" rowHeight="120" id="nlp-gi-dOu" customClass="SightTableViewCell" customModule="melbourne_historical_sights" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nlp-gi-dOu" id="AQN-Ra-OXd">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fLG-uL-2aP">
-                                            <rect key="frame" x="8" y="8" width="98" height="90"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fLG-uL-2aP">
+                                            <rect key="frame" x="16" y="15" width="90" height="90"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="90" id="2zm-Lb-OWV"/>
-                                                <constraint firstAttribute="width" secondItem="fLG-uL-2aP" secondAttribute="height" multiplier="1:1" constant="8" id="NcX-Rn-dDm"/>
                                                 <constraint firstAttribute="height" constant="90" id="lRG-59-3yk"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWH-xu-DWw">
-                                            <rect key="frame" x="122" y="16" width="221" height="21"/>
+                                            <rect key="frame" x="122" y="16" width="221" height="20.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h42-rn-VRU">
-                                            <rect key="frame" x="122" y="41" width="221" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h42-rn-VRU">
+                                            <rect key="frame" x="122" y="40.5" width="221" height="52.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -88,13 +87,12 @@
                                     <constraints>
                                         <constraint firstItem="h42-rn-VRU" firstAttribute="leading" secondItem="fLG-uL-2aP" secondAttribute="trailing" constant="16" id="Co4-jd-qfK"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="MWH-xu-DWw" secondAttribute="trailing" constant="16" id="D9W-0a-4Hd"/>
-                                        <constraint firstItem="fLG-uL-2aP" firstAttribute="leading" secondItem="AQN-Ra-OXd" secondAttribute="leading" constant="8" id="UKg-RW-QkF"/>
+                                        <constraint firstItem="fLG-uL-2aP" firstAttribute="leading" secondItem="AQN-Ra-OXd" secondAttribute="leading" constant="16" id="UKg-RW-QkF"/>
                                         <constraint firstItem="MWH-xu-DWw" firstAttribute="top" secondItem="AQN-Ra-OXd" secondAttribute="top" constant="16" id="XQG-5C-Iwr"/>
-                                        <constraint firstItem="fLG-uL-2aP" firstAttribute="top" secondItem="AQN-Ra-OXd" secondAttribute="top" constant="8" id="cuf-gB-b5v"/>
+                                        <constraint firstItem="fLG-uL-2aP" firstAttribute="centerY" secondItem="AQN-Ra-OXd" secondAttribute="centerY" id="Zj8-6P-0Hv"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="h42-rn-VRU" secondAttribute="bottom" constant="16" id="gBs-1y-WOJ"/>
                                         <constraint firstItem="h42-rn-VRU" firstAttribute="top" secondItem="MWH-xu-DWw" secondAttribute="bottom" constant="4" id="hAg-D2-4N1"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="h42-rn-VRU" secondAttribute="trailing" constant="16" id="ptg-WY-Yiw"/>
-                                        <constraint firstAttribute="bottom" secondItem="fLG-uL-2aP" secondAttribute="bottom" constant="8" id="pyQ-bt-gzR"/>
                                         <constraint firstItem="MWH-xu-DWw" firstAttribute="leading" secondItem="fLG-uL-2aP" secondAttribute="trailing" constant="16" id="wK6-2G-ITT"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -125,7 +123,7 @@
         <!--Sight-->
         <scene sceneID="jtd-U7-Zjh">
             <objects>
-                <viewController id="5hK-JY-LFh" customClass="SightViewController" customModule="melbourne_historical_sights" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5hK-JY-LFh" customClass="SightDetailViewController" customModule="melbourne_historical_sights" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dXn-8l-DdJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,7 +146,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Nn-du-B5w">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Nn-du-B5w">
                                                 <rect key="frame" x="16" y="219" width="343" height="36"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                                 <nil key="textColor"/>
@@ -364,6 +362,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cvb-Q1-xcK"/>
+        <segue reference="nax-ad-5Or"/>
     </inferredMetricsTieBreakers>
 </document>

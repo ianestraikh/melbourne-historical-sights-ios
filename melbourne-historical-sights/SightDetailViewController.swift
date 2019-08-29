@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class SightViewController: UIViewController {
+class SightDetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var desc: UILabel!

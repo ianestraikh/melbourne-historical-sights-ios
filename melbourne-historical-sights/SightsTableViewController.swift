@@ -118,7 +118,8 @@ class SightsTableViewController: UITableViewController, UISearchResultsUpdating,
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sight = filteredSights[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
-        //performSegue(withIdentifier: "sightSegue", sender: sight)
+        mapViewController?.sightToFocus = sight
+        navigationController?.popViewController(animated: true)
     }
     
     func displayMessage(title: String, message: String) {
@@ -127,25 +128,9 @@ class SightsTableViewController: UITableViewController, UISearchResultsUpdating,
         self.present(alertController, animated: true, completion: nil)
     }
     
-    // Same func is in Util file now
-//    func loadImageData(filename: String) -> UIImage? {
-//        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-//
-//        let url = NSURL(fileURLWithPath: path)
-//        var image: UIImage?
-//        if let pathComponent = url.appendingPathComponent(filename) {
-//            let filePath = pathComponent.path
-//            let fileManager = FileManager.default
-//            let fileData = fileManager.contents(atPath: filePath)
-//            image = UIImage(data: fileData!)
-//        }
-//
-//        return image
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sightSegue" {
-            let destination = segue.destination as! SightViewController
+            let destination = segue.destination as! SightDetailViewController
             destination.sight = sender as? Sight
         }
     }
