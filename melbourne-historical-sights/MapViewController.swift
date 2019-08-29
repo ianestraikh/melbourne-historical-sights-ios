@@ -93,8 +93,7 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
     }
     
     // https://developer.apple.com/documentation/mapkit/mapkit_annotations/annotating_a_map_with_custom_data
-    /// Create an annotation view for the Location, and add an image to the callout.
-    /// - Tag: CalloutImage
+    /// Create an annotation view for the Location, and add an image and desc to the callout.
     private func setupLocationAnnotationView(for annotation: LocationAnnotation, on mapView: MKMapView) -> MKAnnotationView {
         let identifier = NSStringFromClass(LocationAnnotation.self)
         let view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier, for: annotation)
@@ -103,16 +102,43 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
             markerAnnotationView.canShowCallout = true
             markerAnnotationView.markerTintColor = UIColor.blue
             
-            // Provide an image view to use as the accessory view's detail view.
             let img = loadImageData(filename: annotation.imageFilename!)
-            let imgView = UIImageView(image: img)
-            // Make image view size 100x100
-            let widthConstraint = NSLayoutConstraint(item: imgView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
-            let heightConstraint = NSLayoutConstraint(item: imgView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
-            imgView.addConstraints([widthConstraint, heightConstraint])
-            imgView.contentMode = .scaleAspectFill
+            let imgView: UIImageView = {
+                let imgView = UIImageView(image: img)
+                let widthConstraint = NSLayoutConstraint(item: imgView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: CGFloat(1), constant: CGFloat(100))
+                let heightConstraint = NSLayoutConstraint(item: imgView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: CGFloat(1), constant: CGFloat(100))
+                imgView.addConstraints([widthConstraint, heightConstraint])
+                imgView.contentMode = .scaleAspectFill
+                
+                return imgView
+            }()
             
-            markerAnnotationView.detailCalloutAccessoryView = imgView
+            let descLabel: UILabel = {
+                let label = UILabel(frame: .zero)
+                label.text = annotation.subtitle
+                label.numberOfLines = 5
+                label.font = UIFont.preferredFont(forTextStyle: .caption1)
+                let widthConstraint = NSLayoutConstraint(item: label, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: CGFloat(1), constant: CGFloat(200))
+                label.addConstraint(widthConstraint)
+                
+                return label
+            }()
+            
+            let stackView: UIStackView = {
+                let stackView = UIStackView(arrangedSubviews: [imgView, descLabel])
+                stackView.translatesAutoresizingMaskIntoConstraints = false
+                stackView.axis = .horizontal
+                stackView.alignment = .top
+                stackView.spacing = CGFloat(10)
+                
+                return stackView
+            }()
+            
+            markerAnnotationView.detailCalloutAccessoryView = stackView
+            
+            let rightButton = UIButton(type: .detailDisclosure)
+            markerAnnotationView.rightCalloutAccessoryView = rightButton
+            
         }
         
         return view
