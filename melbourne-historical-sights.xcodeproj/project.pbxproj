@@ -23,8 +23,6 @@
 		BA706DA82306611900B6470B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA62306611900B6470B /* LaunchScreen.storyboard */; };
 		BA786BAB230A9E9E0039200B /* SightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA786BAA230A9E9E0039200B /* SightViewController.swift */; };
 		BA786BAD230AA71E0039200B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA786BAC230AA71E0039200B /* Util.swift */; };
-		BA91E0FD23174E83001BBABD /* LocationAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA91E0FC23174E83001BBABD /* LocationAnnotationView.xib */; };
-		BA91E0FF2317538C001BBABD /* LocationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA91E0FE2317538C001BBABD /* LocationAnnotationView.swift */; };
 		BADC7D0F23078DA70086CFB3 /* DefaultData.plist in Resources */ = {isa = PBXBuildFile; fileRef = BADC7D0E23078DA70086CFB3 /* DefaultData.plist */; };
 		BADC7D122307A0B90086CFB3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADC7D112307A0B90086CFB3 /* MapViewController.swift */; };
 		BAFB670F230E55BB00F220BD /* EditSightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB670E230E55BB00F220BD /* EditSightViewController.swift */; };
@@ -49,8 +47,6 @@
 		BA706DA92306611900B6470B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA786BAA230A9E9E0039200B /* SightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightViewController.swift; sourceTree = "<group>"; };
 		BA786BAC230AA71E0039200B /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		BA91E0FC23174E83001BBABD /* LocationAnnotationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationAnnotationView.xib; sourceTree = "<group>"; };
-		BA91E0FE2317538C001BBABD /* LocationAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotationView.swift; sourceTree = "<group>"; };
 		BADC7D0E23078DA70086CFB3 /* DefaultData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultData.plist; sourceTree = "<group>"; };
 		BADC7D112307A0B90086CFB3 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BAFB670E230E55BB00F220BD /* EditSightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSightViewController.swift; sourceTree = "<group>"; };
@@ -122,8 +118,6 @@
 				BA786BAC230AA71E0039200B /* Util.swift */,
 				BAFB670E230E55BB00F220BD /* EditSightViewController.swift */,
 				BA36479A2315241B0045D67F /* LocationAnnotation.swift */,
-				BA91E0FC23174E83001BBABD /* LocationAnnotationView.xib */,
-				BA91E0FE2317538C001BBABD /* LocationAnnotationView.swift */,
 			);
 			path = "melbourne-historical-sights";
 			sourceTree = "<group>";
@@ -188,7 +182,6 @@
 			files = (
 				BA706DA82306611900B6470B /* LaunchScreen.storyboard in Resources */,
 				4EC264592307F08100C6F98A /* DefaultImages in Resources */,
-				BA91E0FD23174E83001BBABD /* LocationAnnotationView.xib in Resources */,
 				BA706DA52306611900B6470B /* Assets.xcassets in Resources */,
 				BADC7D0F23078DA70086CFB3 /* DefaultData.plist in Resources */,
 				BA706DA32306611100B6470B /* Main.storyboard in Resources */,
@@ -212,7 +205,6 @@
 				BA786BAD230AA71E0039200B /* Util.swift in Sources */,
 				4E93A2B42306D87200AE51C5 /* SightTableViewCell.swift in Sources */,
 				BA706D9E2306611000B6470B /* AppDelegate.swift in Sources */,
-				BA91E0FF2317538C001BBABD /* LocationAnnotationView.swift in Sources */,
 				BAFB670F230E55BB00F220BD /* EditSightViewController.swift in Sources */,
 				BA36479B2315241B0045D67F /* LocationAnnotation.swift in Sources */,
 				4E9C182D2306BC6500D0DE72 /* MelbSights.xcdatamodeld in Sources */,

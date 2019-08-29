@@ -65,11 +65,23 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
             mapView.addAnnotation(location)
         }
     }
-    
+       
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "sightsSegue" {
-//            let destination = segue.destination as! SightsTableViewController
-//            destination.delegate = self
+        if segue.identifier == "sightDetailSegue" {
+            let destination = segue.destination as! SightViewController
+            destination.sight = sender as? Sight
+        } else if segue.identifier == "sightsSegue" {
+            
+        }
+    }
+    
+    // https://developer.apple.com/documentation/mapkit/mapkit_annotations/annotating_a_map_with_custom_data
+    /// Called whent he user taps the disclosure button in the bridge callout.
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        // This illustrates how to detect which annotation type was tapped on for its callout.
+        if let annotation = view.annotation as! LocationAnnotation? {
+            performSegue(withIdentifier: "sightDetailSegue", sender: annotation.sight)
         }
     }
     
@@ -138,7 +150,6 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
             
             let rightButton = UIButton(type: .detailDisclosure)
             markerAnnotationView.rightCalloutAccessoryView = rightButton
-            
         }
         
         return view

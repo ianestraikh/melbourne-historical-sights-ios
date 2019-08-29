@@ -15,6 +15,8 @@ class SightsTableViewController: UITableViewController, UISearchResultsUpdating,
     var sights: [Sight] = []
     var filteredSights: [Sight] = []
     weak var databaseController: DatabaseProtocol?
+    
+    var mapViewController: MapViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +118,7 @@ class SightsTableViewController: UITableViewController, UISearchResultsUpdating,
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sight = filteredSights[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "sightSegue", sender: sight)
+        //performSegue(withIdentifier: "sightSegue", sender: sight)
     }
     
     func displayMessage(title: String, message: String) {
