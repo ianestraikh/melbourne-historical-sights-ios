@@ -71,7 +71,7 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         mapView.addAnnotations(sights)
         
         if sightToFocus != nil {
-            // An ugly workaround to prevent the marker hover above the callout when the annotation selected second time consequentally
+            // An ugly workaround to prevent the marker from hovering above the callout when the annotation selected second time consequentally
             // move region to different one than it was before
             centerMapOnMelbourne()
             
@@ -184,8 +184,11 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         //        markerAnnotationView.image = image
         let img = loadImageData(filename: annotation.imageFilename!)
         let imgView: UIImageView = {
-            let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: markerAnnotationView.frame.height, height: markerAnnotationView.frame.height))
+            let height = markerAnnotationView.frame.height + markerAnnotationView.layoutMargins.top + markerAnnotationView.layoutMargins.bottom
+            let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: height, height: height))
+            imgView.layer.cornerRadius = markerAnnotationView.layoutMargins.top
             imgView.contentMode = .scaleAspectFill
+            imgView.clipsToBounds = true
             imgView.image = img
             
             return imgView
