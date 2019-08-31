@@ -23,31 +23,14 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
         
-        
-        let zoomRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: -37.8136, longitude: 144.9631), latitudinalMeters: 4000, longitudinalMeters: 4000)
-        mapView.setRegion(mapView.regionThatFits(zoomRegion), animated: false)
+        centerMapOnMelbourne()
         
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(Sight.self))
         mapView.delegate = self
         
     }
     
-    @IBAction func showSightsTable(_ sender: Any) {
-        performSegue(withIdentifier: "sightsSegue", sender: self)
-    }
-    
-    
-    func focusOn(annotation: MKAnnotation) {
-        for annotaion in mapView.selectedAnnotations {
-            mapView.deselectAnnotation(annotaion, animated: false)
-        }
-        
-        let zoomRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-        mapView.setRegion(mapView.regionThatFits(zoomRegion), animated: true)
-        
-        mapView.selectAnnotation(annotation, animated: true)
-    }
-    
+    // MARK: - Database Listener
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
@@ -60,6 +43,26 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         databaseController?.removeListener(listener: self)
     }
     
+    @IBAction func showSightsTable(_ sender: Any) {
+        performSegue(withIdentifier: "sightsSegue", sender: self)
+    }
+    
+    private func centerMapOnMelbourne() {
+        let zoomRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: -37.8136, longitude: 144.9631), latitudinalMeters: 4000, longitudinalMeters: 4000)
+        mapView.setRegion(mapView.regionThatFits(zoomRegion), animated: false)
+    }
+    
+    func focusOn(annotation: MKAnnotation) {
+        for annotaion in mapView.selectedAnnotations {
+            mapView.deselectAnnotation(annotaion, animated: false)
+        }
+        
+        let zoomRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        mapView.setRegion(mapView.regionThatFits(zoomRegion), animated: true)
+        
+        mapView.selectAnnotation(annotation, animated: true)
+    }
+    
     // Update annotations every time sight list change
     func onSightListChange(change: DatabaseChange, sights: [Sight]) {
         mapView.removeAnnotations(mapView.annotations)
@@ -68,6 +71,10 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         mapView.addAnnotations(sights)
         
         if sightToFocus != nil {
+            // An ugly workaround to prevent the marker hover above the callout when the annotation selected second time consequentally
+            // move region to different one than it was before
+            centerMapOnMelbourne()
+            
             focusOn(annotation: sightToFocus!)
             sightToFocus = nil
         }
@@ -106,21 +113,22 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         var annotationView: MKAnnotationView?
         
         if let annotation = annotation as? Sight {
-            annotationView = setupLocationAnnotationView(for: annotation, on: mapView)
+            annotationView = setupAnnotationView2(for: annotation, on: mapView)
         }
         
         return annotationView
     }
     
     // https://developer.apple.com/documentation/mapkit/mapkit_annotations/annotating_a_map_with_custom_data
-    /// Create an annotation view for the Location, and add an image and desc to the callout.
-    private func setupLocationAnnotationView(for annotation: Sight, on mapView: MKMapView) -> MKAnnotationView {
+    /// Create an annotation view for and add an image and desc to the callout.
+    private func setupAnnotationView(for annotation: Sight, on mapView: MKMapView) -> MKAnnotationView {
         let identifier = NSStringFromClass(Sight.self)
         let view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier, for: annotation)
         if let markerAnnotationView = view as? MKMarkerAnnotationView {
             markerAnnotationView.animatesWhenAdded = true
             markerAnnotationView.canShowCallout = true
             markerAnnotationView.markerTintColor = UIColor.blue
+            markerAnnotationView.displayPriority = .required
             
             let img = loadImageData(filename: annotation.imageFilename!)
             let imgView: UIImageView = {
@@ -161,5 +169,35 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         }
         
         return view
+    }
+
+    // https://developer.apple.com/documentation/mapkit/mapkit_annotations/annotating_a_map_with_custom_data
+    // without using detailCalloutAccessoryView
+    private func setupAnnotationView2(for annotation: Sight, on mapView: MKMapView) -> MKAnnotationView {
+        let reuseIdentifier = NSStringFromClass(Sight.self)
+        let markerAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier, for: annotation)
+        
+        markerAnnotationView.canShowCallout = true
+        markerAnnotationView.displayPriority = .required
+        
+        // Provide the annotation view's image.
+        //        markerAnnotationView.image = image
+        let img = loadImageData(filename: annotation.imageFilename!)
+        let imgView: UIImageView = {
+            let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: markerAnnotationView.frame.height, height: markerAnnotationView.frame.height))
+            imgView.contentMode = .scaleAspectFill
+            imgView.image = img
+            
+            return imgView
+        }()
+        
+        
+        // Provide the left image icon for the annotation.
+        markerAnnotationView.leftCalloutAccessoryView = imgView
+        
+        let rightButton = UIButton(type: .detailDisclosure)
+        markerAnnotationView.rightCalloutAccessoryView = rightButton
+        
+        return markerAnnotationView
     }
 }

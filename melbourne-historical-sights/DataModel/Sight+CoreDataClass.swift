@@ -21,5 +21,7 @@ public class Sight: NSManagedObject, MKAnnotation {
         return self.name
     }
     
-    public var subtitle: String?
+    public var subtitle: String? {
+        return self.desc
+    }
 }
