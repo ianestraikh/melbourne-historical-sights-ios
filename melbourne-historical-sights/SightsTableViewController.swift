@@ -11,12 +11,19 @@ import MapKit
 
 class SightsTableViewController: UITableViewController, UISearchResultsUpdating, DatabaseListener {
     
+    let SECTION_SORT = 0;
+    let SECTION_SIGHT = 1;
+    
     let CELL_SIGHT = "sightCell"
+    let CELL_SORT = "sortCell"
+    
     var sights: [Sight] = []
     var filteredSights: [Sight] = []
     weak var databaseController: DatabaseProtocol?
     
     var mapViewController: MapViewController?
+    
+    var sortSegmentedControl: UISegmentedControl?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,67 +66,107 @@ class SightsTableViewController: UITableViewController, UISearchResultsUpdating,
     
     
     func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text?.lowercased(),searchText.count > 0 {
+        if let searchText = searchController.searchBar.text,searchText.count > 0 {
             filteredSights = sights.filter({(sight: Sight) -> Bool in
-                return sight.name!.lowercased().contains(searchText)
+                return sight.name!.contains(searchText)
             })
         } else {
             filteredSights = sights;
+            if let sortType = sortSegmentedControl?.selectedSegmentIndex {
+                sortFitleredSights(type: sortType)
+            }
         }
         
         tableView.reloadData();
     }
     
+    @IBAction func sortSegmentedControlChanged(sender: UISegmentedControl?) {
+        let sortType = sortSegmentedControl!.selectedSegmentIndex
+        sortFitleredSights(type: sortType)
+        
+        tableView.reloadData();
+    }
+    
+    func sortFitleredSights(type: Int) {
+        if type == 0 {
+            filteredSights = filteredSights.sorted(by: { $0.name!.lowercased() < $1.name!.lowercased() })
+        } else if type == 1 {
+            filteredSights = filteredSights.sorted(by: { $0.name!.lowercased() > $1.name!.lowercased() })
+        }
+    }
+    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredSights.count
+        if section == SECTION_SIGHT {
+            return filteredSights.count
+        } else {
+            return 1
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let sightCell = tableView.dequeueReusableCell(withIdentifier: CELL_SIGHT, for: indexPath) as! SightTableViewCell
-        let sight = filteredSights[indexPath.row]
-        
-        sightCell.nameLabel.text = sight.name
-        sightCell.descLabel.text = sight.desc
-        if let img = loadImageData(filename: sight.imageFilename!) {
-            // Get thumbnail from image
-            // https://stackoverflow.com/questions/40675640/creating-a-thumbnail-from-uiimage-using-cgimagesourcecreatethumbnailatindex
-//            let imageData = img.pngData()
-//            let options = [
-//                kCGImageSourceCreateThumbnailWithTransform: true,
-//                kCGImageSourceCreateThumbnailFromImageAlways: true,
-//                kCGImageSourceThumbnailMaxPixelSize: 100] as CFDictionary
-//            let source = CGImageSourceCreateWithData(imageData! as CFData, nil)!
-//            let imageReference = CGImageSourceCreateThumbnailAtIndex(source, 0, options)!
-//            let thumbnail = UIImage(cgImage: imageReference)
+        if indexPath.section == SECTION_SIGHT {
+            let sightCell = tableView.dequeueReusableCell(withIdentifier: CELL_SIGHT, for: indexPath) as! SightTableViewCell
+            let sight = filteredSights[indexPath.row]
             
-            sightCell.imgView.image = img
+            sightCell.nameLabel.text = sight.name
+            sightCell.descLabel.text = sight.desc
+            if let img = loadImageData(filename: sight.imageFilename!) {
+                // Get thumbnail from image
+                // https://stackoverflow.com/questions/40675640/creating-a-thumbnail-from-uiimage-using-cgimagesourcecreatethumbnailatindex
+    //            let imageData = img.pngData()
+    //            let options = [
+    //                kCGImageSourceCreateThumbnailWithTransform: true,
+    //                kCGImageSourceCreateThumbnailFromImageAlways: true,
+    //                kCGImageSourceThumbnailMaxPixelSize: 100] as CFDictionary
+    //            let source = CGImageSourceCreateWithData(imageData! as CFData, nil)!
+    //            let imageReference = CGImageSourceCreateThumbnailAtIndex(source, 0, options)!
+    //            let thumbnail = UIImage(cgImage: imageReference)
+                
+                sightCell.imgView.image = img
+            }
+            return sightCell
         }
-
         
-        return sightCell
+        let sortCell = tableView.dequeueReusableCell(withIdentifier: CELL_SORT, for: indexPath) as! SortTableViewCell
+        sortCell.selectionStyle = .none
+        sortSegmentedControl = sortCell.sortSegmentedConrol
+        return sortCell
+    }
+    
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        if indexPath.section == SECTION_SIGHT {
+            return true
+        }
+        return false
     }
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        // Delete the row from the data source
-        let sight = filteredSights[indexPath.row]
-        
-        filteredSights.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .fade)
-        
-        let _ = databaseController?.deleteSight(sight: sight)
+            if editingStyle == .delete && indexPath.section == SECTION_SIGHT {
+            // Delete the row from the data source
+            let sight = filteredSights[indexPath.row]
+            
+            filteredSights.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            let _ = databaseController?.deleteSight(sight: sight)
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let sight = filteredSights[indexPath.row]
-        tableView.deselectRow(at: indexPath, animated: true)
-        mapViewController?.sightToFocus = sight
-        navigationController?.popViewController(animated: true)
+        if indexPath.section == SECTION_SIGHT {
+            let sight = filteredSights[indexPath.row]
+            tableView.deselectRow(at: indexPath, animated: true)
+            mapViewController?.sightToFocus = sight
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     func displayMessage(title: String, message: String) {

@@ -20,6 +20,7 @@
 		BA706DA32306611100B6470B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA12306611100B6470B /* Main.storyboard */; };
 		BA706DA52306611900B6470B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA42306611900B6470B /* Assets.xcassets */; };
 		BA706DA82306611900B6470B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA62306611900B6470B /* LaunchScreen.storyboard */; };
+		BA746195231B49F5004ED71A /* SortTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA746194231B49F5004ED71A /* SortTableViewCell.swift */; };
 		BA786BAB230A9E9E0039200B /* SightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA786BAA230A9E9E0039200B /* SightDetailViewController.swift */; };
 		BA786BAD230AA71E0039200B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA786BAC230AA71E0039200B /* Util.swift */; };
 		BADC7D0F23078DA70086CFB3 /* DefaultData.plist in Resources */ = {isa = PBXBuildFile; fileRef = BADC7D0E23078DA70086CFB3 /* DefaultData.plist */; };
@@ -43,6 +44,7 @@
 		BA706DA42306611900B6470B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA706DA72306611900B6470B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA706DA92306611900B6470B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA746194231B49F5004ED71A /* SortTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortTableViewCell.swift; sourceTree = "<group>"; };
 		BA786BAA230A9E9E0039200B /* SightDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightDetailViewController.swift; sourceTree = "<group>"; };
 		BA786BAC230AA71E0039200B /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		BADC7D0E23078DA70086CFB3 /* DefaultData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultData.plist; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				BA786BAA230A9E9E0039200B /* SightDetailViewController.swift */,
 				BA786BAC230AA71E0039200B /* Util.swift */,
 				BAFB670E230E55BB00F220BD /* EditSightViewController.swift */,
+				BA746194231B49F5004ED71A /* SortTableViewCell.swift */,
 			);
 			path = "melbourne-historical-sights";
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				4E9C183B2306C34100D0DE72 /* Sight+CoreDataClass.swift in Sources */,
 				4E9C18382306BF6500D0DE72 /* DatabaseProtocol.swift in Sources */,
 				4E93A2B02306D01100AE51C5 /* MulticastDelegate.swift in Sources */,
+				BA746195231B49F5004ED71A /* SortTableViewCell.swift in Sources */,
 				BA786BAB230A9E9E0039200B /* SightDetailViewController.swift in Sources */,
 				BADC7D122307A0B90086CFB3 /* MapViewController.swift in Sources */,
 				4E93A2B22306D31200AE51C5 /* SightsTableViewController.swift in Sources */,

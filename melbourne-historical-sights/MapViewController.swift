@@ -186,7 +186,7 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         let imgView: UIImageView = {
             let height = markerAnnotationView.frame.height + markerAnnotationView.layoutMargins.top + markerAnnotationView.layoutMargins.bottom
             let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: height, height: height))
-            imgView.layer.cornerRadius = markerAnnotationView.layoutMargins.top
+            imgView.layer.cornerRadius = CGFloat(5)
             imgView.contentMode = .scaleAspectFill
             imgView.clipsToBounds = true
             imgView.image = img

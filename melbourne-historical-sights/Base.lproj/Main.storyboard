@@ -57,8 +57,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sortCell" id="Kd0-0z-6RR" customClass="SortTableViewCell" customModule="melbourne_historical_sights" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kd0-0z-6RR" id="TGU-27-bOb">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ddY-zg-qbl">
+                                            <rect key="frame" x="256" y="8" width="103" height="29"/>
+                                            <segments>
+                                                <segment title="A to Z"/>
+                                                <segment title="Z to A"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="sortSegmentedControlChangedWithSender:" destination="4Ek-dV-7UP" eventType="valueChanged" id="aN7-C2-3Yh"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMT-L2-JBq">
+                                            <rect key="frame" x="210.5" y="11.5" width="37.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ddY-zg-qbl" firstAttribute="centerY" secondItem="TGU-27-bOb" secondAttribute="centerY" id="9ep-EH-J9V"/>
+                                        <constraint firstItem="zMT-L2-JBq" firstAttribute="centerY" secondItem="TGU-27-bOb" secondAttribute="centerY" id="Q64-jl-Dvc"/>
+                                        <constraint firstAttribute="trailing" secondItem="ddY-zg-qbl" secondAttribute="trailing" constant="16" id="cOY-RY-4Ov"/>
+                                        <constraint firstItem="zMT-L2-JBq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TGU-27-bOb" secondAttribute="leading" constant="16" id="ckq-Ci-QeY"/>
+                                        <constraint firstItem="ddY-zg-qbl" firstAttribute="leading" secondItem="zMT-L2-JBq" secondAttribute="trailing" constant="8" id="k4N-tV-uYS"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="sortSegmentedConrol" destination="ddY-zg-qbl" id="Vlg-ko-mTS"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sightCell" rowHeight="120" id="nlp-gi-dOu" customClass="SightTableViewCell" customModule="melbourne_historical_sights" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nlp-gi-dOu" id="AQN-Ra-OXd">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
@@ -362,6 +398,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cvb-Q1-xcK"/>
+        <segue reference="nax-ad-5Or"/>
     </inferredMetricsTieBreakers>
 </document>
