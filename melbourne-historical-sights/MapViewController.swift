@@ -159,32 +159,38 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
     // without using detailCalloutAccessoryView
     private func setupAnnotationView2(for annotation: Sight, on mapView: MKMapView) -> MKAnnotationView {
         let reuseIdentifier = NSStringFromClass(Sight.self)
-        let markerAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier, for: annotation)
+        let view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier, for: annotation)
         
-        markerAnnotationView.canShowCallout = true
-        markerAnnotationView.displayPriority = .required
-        
-        // Provide the annotation view's image.
-        //        markerAnnotationView.image = image
-        let img = loadImageData(filename: annotation.imageFilename!)
-        let imgView: UIImageView = {
-            let height = markerAnnotationView.frame.height + markerAnnotationView.layoutMargins.top + markerAnnotationView.layoutMargins.bottom
-            let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: height, height: height))
-            imgView.layer.cornerRadius = CGFloat(5)
-            imgView.contentMode = .scaleAspectFill
-            imgView.clipsToBounds = true
-            imgView.image = img
+        if let markerAnnotationView = view as? MKMarkerAnnotationView {
+            markerAnnotationView.canShowCallout = true
+            markerAnnotationView.displayPriority = .required
             
-            return imgView
-        }()
+            markerAnnotationView.glyphImage = UIImage(named: "church")
+            
+            // Provide the annotation view's image.
+            //        markerAnnotationView.image = image
+            let img = loadImageData(filename: annotation.imageFilename!)
+            let imgView: UIImageView = {
+                let height = markerAnnotationView.frame.height + markerAnnotationView.layoutMargins.top + markerAnnotationView.layoutMargins.bottom
+                let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: height, height: height))
+                imgView.layer.cornerRadius = CGFloat(5)
+                imgView.contentMode = .scaleAspectFill
+                imgView.clipsToBounds = true
+                imgView.image = img
+                
+                return imgView
+            }()
+            
+            
+            // Provide the left image icon for the annotation.
+            markerAnnotationView.leftCalloutAccessoryView = imgView
+            
+            let rightButton = UIButton(type: .detailDisclosure)
+            markerAnnotationView.rightCalloutAccessoryView = rightButton
+            
+            return markerAnnotationView
+        }
         
-        
-        // Provide the left image icon for the annotation.
-        markerAnnotationView.leftCalloutAccessoryView = imgView
-        
-        let rightButton = UIButton(type: .detailDisclosure)
-        markerAnnotationView.rightCalloutAccessoryView = rightButton
-        
-        return markerAnnotationView
+        return view
     }
 }
