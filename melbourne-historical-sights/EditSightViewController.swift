@@ -84,25 +84,4 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
         }
         dismiss(animated: true, completion: nil)
     }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        //displayMessage("There was an error in getting the image", "Error", picker)
-    }
-    
-    // TODO: when the cancel button is clicked at imagePickerController the message appears, but the window is not being canceled
-    func displayMessage(_ message: String,_ title: String, _ obj: UIViewController) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-        obj.present(alertController, animated: true, completion: nil)
-    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
