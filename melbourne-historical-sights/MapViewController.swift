@@ -23,7 +23,7 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
         
-        centerMapOnMelbourne()
+        centerMapOnMelbourne(mapView: mapView)
         
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(Sight.self))
         mapView.delegate = self
@@ -47,22 +47,6 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         performSegue(withIdentifier: "sightsSegue", sender: self)
     }
     
-    private func centerMapOnMelbourne() {
-        let zoomRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: -37.8136, longitude: 144.9631), latitudinalMeters: 4000, longitudinalMeters: 4000)
-        mapView.setRegion(mapView.regionThatFits(zoomRegion), animated: false)
-    }
-    
-    func focusOn(annotation: MKAnnotation) {
-        for annotaion in mapView.selectedAnnotations {
-            mapView.deselectAnnotation(annotaion, animated: false)
-        }
-        
-        let zoomRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-        mapView.setRegion(mapView.regionThatFits(zoomRegion), animated: true)
-        
-        mapView.selectAnnotation(annotation, animated: true)
-    }
-    
     // Update annotations every time sight list change
     func onSightListChange(change: DatabaseChange, sights: [Sight]) {
         mapView.removeAnnotations(mapView.annotations)
@@ -73,9 +57,9 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         if sightToFocus != nil {
             // An ugly workaround to prevent the marker from hovering above the callout when the annotation selected second time consequentally
             // move region to different one than it was before
-            centerMapOnMelbourne()
+            centerMapOnMelbourne(mapView: mapView)
             
-            focusOn(annotation: sightToFocus!)
+            focusOn(mapView: mapView, annotation: sightToFocus!)
             sightToFocus = nil
         }
     }

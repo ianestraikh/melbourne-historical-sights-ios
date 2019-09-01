@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import MapKit
 
 class EditSightViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var mapView: MKMapView!
     
     weak var sight: Sight?
     
@@ -28,6 +30,8 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
             
             self.nameTextField.text = sight!.name
             self.descTextView.text = sight!.desc
+            
+            focusOn(mapView: mapView, annotation: sight!)
         }
         
         // Make text view look like text field
@@ -41,6 +45,8 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
         // https://stackoverflow.com/questions/26689232/scrollview-and-keyboard-swift/50829480
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        //centerMapOnMelbourne(mapView: mapView)
     }
     
     // https://stackoverflow.com/questions/26689232/scrollview-and-keyboard-swift/50829480

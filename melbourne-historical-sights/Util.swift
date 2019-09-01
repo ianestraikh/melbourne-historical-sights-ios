@@ -6,6 +6,7 @@
 //  Copyright © 2019 Ian Estraikh. All rights reserved.
 //
 import UIKit
+import MapKit
 
 func loadImageData(filename: String) -> UIImage? {
     let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
@@ -20,4 +21,20 @@ func loadImageData(filename: String) -> UIImage? {
     }
     
     return image
+}
+
+func centerMapOnMelbourne(mapView: MKMapView) {
+    let zoomRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: -37.8136, longitude: 144.9631), latitudinalMeters: 4000, longitudinalMeters: 4000)
+    mapView.setRegion(mapView.regionThatFits(zoomRegion), animated: false)
+}
+
+func focusOn(mapView: MKMapView, annotation: MKAnnotation) {
+    for annotaion in mapView.selectedAnnotations {
+        mapView.deselectAnnotation(annotaion, animated: false)
+    }
+    
+    let zoomRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+    mapView.setRegion(mapView.regionThatFits(zoomRegion), animated: true)
+    
+    mapView.selectAnnotation(annotation, animated: true)
 }
