@@ -3,6 +3,10 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>color</key>
+		<integer>0</integer>
+		<key>glyphimage</key>
+		<integer>1</integer>
 		<key>imageFilename</key>
 		<string>image00.jpg</string>
 		<key>name</key>
@@ -15,6 +19,10 @@
 		<real>144.9764</real>
 	</dict>
 	<dict>
+		<key>glyphimage</key>
+		<integer>2</integer>
+		<key>color</key>
+		<integer>1</integer>
 		<key>imageFilename</key>
 		<string>image01.jpg</string>
 		<key>name</key>
@@ -27,6 +35,10 @@
 		<real>144.9671</real>
 	</dict>
 	<dict>
+		<key>glyphimage</key>
+		<integer>1</integer>
+		<key>color</key>
+		<integer>2</integer>
 		<key>imageFilename</key>
 		<string>image02.jpg</string>
 		<key>name</key>
@@ -39,6 +51,10 @@
 		<real>144.9685</real>
 	</dict>
 	<dict>
+		<key>glyphimage</key>
+		<integer>1</integer>
+		<key>color</key>
+		<integer>3</integer>
 		<key>imageFilename</key>
 		<string>image03.jpg</string>
 		<key>name</key>
@@ -51,6 +67,10 @@
 		<real>144.9677</real>
 	</dict>
 	<dict>
+		<key>glyphimage</key>
+		<integer>1</integer>
+		<key>color</key>
+		<integer>0</integer>
 		<key>imageFilename</key>
 		<string>image04.jpg</string>
 		<key>name</key>
@@ -69,6 +89,10 @@ For further information please contact St Michael&apos;s Uniting Church or view 
 		<real>144.969442</real>
 	</dict>
 	<dict>
+		<key>glyphimage</key>
+		<integer>2</integer>
+		<key>color</key>
+		<integer>1</integer>
 		<key>imageFilename</key>
 		<string>image05.jpg</string>
 		<key>name</key>
@@ -87,6 +111,10 @@ Special exhibitions and events are held throughout the year providing an ever ch
 		<real>144.976697</real>
 	</dict>
 	<dict>
+		<key>glyphimage</key>
+		<integer>3</integer>
+		<key>color</key>
+		<integer>2</integer>
 		<key>imageFilename</key>
 		<string>image06.jpg</string>
 		<key>name</key>
@@ -103,6 +131,10 @@ The gold Eight Hour Day monument across the road commemorates workers who succes
 		<real>144.966222</real>
 	</dict>
 	<dict>
+		<key>glyphimage</key>
+		<integer>3</integer>
+		<key>color</key>
+		<integer>3</integer>
 		<key>imageFilename</key>
 		<string>image07.jpg</string>
 		<key>name</key>
@@ -115,6 +147,10 @@ The gold Eight Hour Day monument across the road commemorates workers who succes
 		<real>144.969579</real>
 	</dict>
 	<dict>
+		<key>glyphimage</key>
+		<integer>0</integer>
+		<key>color</key>
+		<integer>0</integer>
 		<key>imageFilename</key>
 		<string>image08.jpg</string>
 		<key>name</key>
@@ -133,6 +169,10 @@ Tours of the Royal Exhibition Building depart from Melbourne Museum. Contact Mel
 		<real>144.971654</real>
 	</dict>
 	<dict>
+		<key>glyphimage</key>
+		<integer>3</integer>
+		<key>color</key>
+		<integer>1</integer>
 		<key>imageFilename</key>
 		<string>image09.jpg</string>
 		<key>name</key>
@@ -150,6 +190,10 @@ Embracing research, discovery and debate, The Potter exhibits art from antiquity
 		<real>144.96526</real>
 	</dict>
 	<dict>
+		<key>glyphimage</key>
+		<integer>3</integer>
+		<key>color</key>
+		<integer>2</integer>
 		<key>imageFilename</key>
 		<string>image10.jpg</string>
 		<key>name</key>
@@ -162,6 +206,10 @@ Embracing research, discovery and debate, The Potter exhibits art from antiquity
 		<real>144.9653</real>
 	</dict>
 	<dict>
+		<key>glyphimage</key>
+		<integer>1</integer>
+		<key>color</key>
+		<integer>3</integer>
 		<key>imageFilename</key>
 		<string>image11.jpg</string>
 		<key>name</key>
@@ -174,6 +222,10 @@ Embracing research, discovery and debate, The Potter exhibits art from antiquity
 		<real>144.9738</real>
 	</dict>
 	<dict>
+		<key>glyphimage</key>
+		<integer>0</integer>
+		<key>color</key>
+		<integer>0</integer>
 		<key>imageFilename</key>
 		<string>image12.jpg</string>
 		<key>name</key>
@@ -186,6 +238,10 @@ Embracing research, discovery and debate, The Potter exhibits art from antiquity
 		<real>144.9669</real>
 	</dict>
 	<dict>
+		<key>glyphimage</key>
+		<integer>0</integer>
+		<key>color</key>
+		<integer>1</integer>
 		<key>imageFilename</key>
 		<string>image13.jpg</string>
 		<key>name</key>
@@ -198,6 +254,10 @@ Embracing research, discovery and debate, The Potter exhibits art from antiquity
 		<real>144.979442</real>
 	</dict>
 	<dict>
+		<key>glyphimage</key>
+		<integer>0</integer>
+		<key>color</key>
+		<integer>2</integer>
 		<key>imageFilename</key>
 		<string>image14.jpg</string>
 		<key>name</key>

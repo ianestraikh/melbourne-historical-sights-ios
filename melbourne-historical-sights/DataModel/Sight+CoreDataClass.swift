@@ -2,7 +2,7 @@
 //  Sight+CoreDataClass.swift
 //  melbourne-historical-sights
 //
-//  Created by fit5140 on 16/8/19.
+//  Created by Ian Estraikh on 2/9/19.
 //  Copyright © 2019 Ian Estraikh. All rights reserved.
 //
 //

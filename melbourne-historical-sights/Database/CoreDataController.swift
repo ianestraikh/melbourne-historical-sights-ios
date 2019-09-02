@@ -44,7 +44,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         }
     }
     
-    func addSight(name: String, desc: String, latitude: Double, longitude: Double, imageFilename: String?) -> Sight {
+    func addSight(name: String, desc: String, latitude: Double, longitude: Double, imageFilename: String?, color: Int16, glyphimage: Int16) -> Sight {
         let sight = NSEntityDescription.insertNewObject(forEntityName: "Sight", into: persistantContainer.viewContext) as! Sight
         sight.name = name
         sight.desc = desc
@@ -53,6 +53,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         }
         sight.latitude = latitude
         sight.longitude = longitude
+        sight.color = color
+        sight.glyphimage = glyphimage
         // This less efficient than batching changes and saving once at end.
         saveContext()
         return sight
@@ -139,8 +141,10 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
                 let lat = plistDict["latitude"] as! Double
                 let lon = plistDict["longitude"] as! Double
                 let filename = plistDict["imageFilename"] as! String
+                let color = plistDict["color"] as! Int16
+                let glyphimage = plistDict["glyphimage"] as! Int16
                 
-                let _ = addSight(name: name, desc: desc, latitude: lat, longitude: lon, imageFilename: filename)
+                let _ = addSight(name: name, desc: desc, latitude: lat, longitude: lon, imageFilename: filename, color: color, glyphimage: glyphimage)
             }
         }
     }

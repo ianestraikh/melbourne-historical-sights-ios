@@ -17,7 +17,7 @@ protocol DatabaseListener: AnyObject {
 }
 
 protocol DatabaseProtocol: AnyObject {
-    func addSight(name: String, desc: String, latitude: Double, longitude: Double, imageFilename: String?) -> Sight
+    func addSight(name: String, desc: String, latitude: Double, longitude: Double, imageFilename: String?, color: Int16, glyphimage: Int16) -> Sight
     func addImageFilenameToSight(imageFilename: String, sight: Sight) -> Bool
     func deleteSight(sight: Sight)
     func addListener(listener: DatabaseListener)
