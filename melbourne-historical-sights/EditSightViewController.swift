@@ -15,6 +15,7 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var markerImageView: UIImageView!
     
     weak var sight: Sight?
     
@@ -47,6 +48,7 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         //centerMapOnMelbourne(mapView: mapView)
+        markerImageView.tintColor = UIColor.red
     }
     
     // https://stackoverflow.com/questions/26689232/scrollview-and-keyboard-swift/50829480
@@ -89,5 +91,13 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
             imageView.image = pickedImage
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func markerTapGestureRecogniser(_ sender: Any) {
+        
+    }
+    
+    @IBAction func markerLongPressGestureRecogniser(_ sender: Any) {
+        markerImageView.tintColor = UIColor.blue
     }
 }
