@@ -29,6 +29,8 @@ class SightDetailViewController: UIViewController {
     }
     
     func updateDetails() {
+        mapView.removeAnnotations(mapView.annotations)
+        
         if let imageFilename = sight!.imageFilename {
             let img = loadImageData(filename: imageFilename)
             imageView.image = img

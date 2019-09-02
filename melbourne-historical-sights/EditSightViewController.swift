@@ -15,9 +15,10 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var markerImageView: UIImageView!
     @IBOutlet weak var glyphimageImageView: UIImageView!
+    
+    var coordinate: CLLocationCoordinate2D?
     
     var selectedGlyphimage = 0
     var selectedColor = 0
@@ -43,14 +44,13 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
             self.nameTextField.text = sight!.name
             self.descTextView.text = sight!.desc
             
-            focusOn(mapView: mapView, annotation: sight!)
-            
             self.selectedColor = Int(sight!.color)
             self.selectedGlyphimage = Int(sight!.glyphimage)
             
             self.imageFilename = sight!.imageFilename
+            
+            coordinate = CLLocationCoordinate2D(latitude: sight!.latitude, longitude: sight!.longitude)
         } else {
-            centerMapOnMelbourne(mapView: mapView)
         }
         
         setupMarkerAppearance(selectedColor: selectedColor, selectedGlyphimage: selectedGlyphimage)
@@ -114,6 +114,7 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func saveSight(_ sender: Any) {
+        
         guard let name = nameTextField.text, !name.isEmpty else {
             displayMessage("Name cannot be emtpy", "Error", self)
             return
@@ -123,8 +124,10 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
             return
         }
         
-        let lat = mapView.centerCoordinate.latitude
-        let lon = mapView.centerCoordinate.longitude
+        if coordinate == nil {
+            displayMessage("Set coordinate first", "Error", self)
+            return
+        }
         
         if sight != nil {
             sight!.name = nameTextField.text
@@ -132,8 +135,8 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
             sight!.imageFilename = self.imageFilename
             sight!.color = Int16(self.selectedColor)
             sight!.glyphimage = Int16(self.selectedGlyphimage)
-            sight!.latitude = lat
-            sight!.longitude = lon
+            sight!.latitude = Double(coordinate!.latitude)
+            sight!.longitude = Double(coordinate!.latitude)
             
             databaseController?.saveContext()
         }
@@ -169,5 +172,16 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     func onSightListChange(change: DatabaseChange, sights: [Sight]) {
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "setLocationSegue" {
+            let destination = segue.destination as! SetLocationViewController
+            destination.coordinate = sender as? CLLocationCoordinate2D
+        }
+    }
+    
+    @IBAction func setLocation(_ sender: Any) {
+        performSegue(withIdentifier: "setLocationSegue", sender: coordinate)
     }
 }

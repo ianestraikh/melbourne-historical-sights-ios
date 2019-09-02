@@ -25,6 +25,7 @@
 		BADC7D122307A0B90086CFB3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADC7D112307A0B90086CFB3 /* MapViewController.swift */; };
 		BADCAF95231C9F8C00E017AC /* Sight+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCAF93231C9F8C00E017AC /* Sight+CoreDataClass.swift */; };
 		BADCAF96231C9F8C00E017AC /* Sight+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCAF94231C9F8C00E017AC /* Sight+CoreDataProperties.swift */; };
+		BAEFDFFA231D0E8F00FB580E /* SetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEFDFF9231D0E8F00FB580E /* SetLocationViewController.swift */; };
 		BAFB670F230E55BB00F220BD /* EditSightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB670E230E55BB00F220BD /* EditSightViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		BADC7D112307A0B90086CFB3 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BADCAF93231C9F8C00E017AC /* Sight+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sight+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BADCAF94231C9F8C00E017AC /* Sight+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sight+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BAEFDFF9231D0E8F00FB580E /* SetLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLocationViewController.swift; sourceTree = "<group>"; };
 		BAFB670E230E55BB00F220BD /* EditSightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSightViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 				BA786BAC230AA71E0039200B /* Util.swift */,
 				BAFB670E230E55BB00F220BD /* EditSightViewController.swift */,
 				BA746194231B49F5004ED71A /* SortTableViewCell.swift */,
+				BAEFDFF9231D0E8F00FB580E /* SetLocationViewController.swift */,
 			);
 			path = "melbourne-historical-sights";
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				BADCAF96231C9F8C00E017AC /* Sight+CoreDataProperties.swift in Sources */,
 				4E9C18402306C6AE00D0DE72 /* CoreDataController.swift in Sources */,
 				BA786BAD230AA71E0039200B /* Util.swift in Sources */,
+				BAEFDFFA231D0E8F00FB580E /* SetLocationViewController.swift in Sources */,
 				4E93A2B42306D87200AE51C5 /* SightTableViewCell.swift in Sources */,
 				BA706D9E2306611000B6470B /* AppDelegate.swift in Sources */,
 				BAFB670F230E55BB00F220BD /* EditSightViewController.swift in Sources */,
