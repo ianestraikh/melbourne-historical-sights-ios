@@ -16,6 +16,10 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var markerImageView: UIImageView!
+    @IBOutlet weak var glyphimageImageView: UIImageView!
+    
+    var selectedGlyphimage = 0
+    var selectedColor = 0
     
     weak var sight: Sight?
     
@@ -48,7 +52,11 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         //centerMapOnMelbourne(mapView: mapView)
-        markerImageView.tintColor = UIColor.red
+        
+        // Set up marker appearance
+        markerImageView.tintColor = MARKER_COLORS[selectedColor]
+        glyphimageImageView.image = UIImage(named: GLYPHIMAGES[selectedGlyphimage])
+        glyphimageImageView.tintColor = UIColor.white
     }
     
     // https://stackoverflow.com/questions/26689232/scrollview-and-keyboard-swift/50829480
@@ -94,10 +102,22 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func markerTapGestureRecogniser(_ sender: Any) {
-        
+        if selectedGlyphimage == GLYPHIMAGES.count - 1 {
+            selectedGlyphimage = 0
+        } else {
+            selectedGlyphimage += 1
+        }
+        glyphimageImageView.image = UIImage(named: GLYPHIMAGES[selectedGlyphimage])
     }
     
-    @IBAction func markerLongPressGestureRecogniser(_ sender: Any) {
-        markerImageView.tintColor = UIColor.blue
+    @IBAction func markerLongPressGestureRecogniser(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            if selectedColor == MARKER_COLORS.count - 1 {
+                selectedColor = 0
+            } else {
+                selectedColor += 1
+            }
+            markerImageView.tintColor = MARKER_COLORS[selectedColor]
+        }
     }
 }

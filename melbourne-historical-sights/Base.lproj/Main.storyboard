@@ -429,6 +429,7 @@
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
                         <outlet property="descTextView" destination="dLt-ou-ZAp" id="Ygf-a7-hmF"/>
+                        <outlet property="glyphimageImageView" destination="Ewy-he-Ver" id="1l2-Rp-b74"/>
                         <outlet property="imageView" destination="M6b-Yx-OCq" id="O8r-BU-yok"/>
                         <outlet property="mapView" destination="bKK-x4-U2e" id="LYj-Ke-ENU"/>
                         <outlet property="markerImageView" destination="wfK-GT-Q5J" id="Ldh-FG-B4P"/>

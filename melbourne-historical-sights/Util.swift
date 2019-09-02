@@ -8,6 +8,10 @@
 import UIKit
 import MapKit
 
+let GLYPHIMAGES = ["building", "church", "fortress", "museum"]
+let MARKER_COLORS = [UIColor.red, UIColor.blue, UIColor.purple, UIColor.green]
+
+
 func loadImageData(filename: String) -> UIImage? {
     let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
     
