@@ -9,7 +9,8 @@
 import UIKit
 import MapKit
 
-class EditSightViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EditSightViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DatabaseListener {
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
@@ -20,11 +21,17 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     
     var selectedGlyphimage = 0
     var selectedColor = 0
+    var imageFilename: String?
     
     weak var sight: Sight?
     
+    weak var databaseController: DatabaseProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController
 
         // Edit sight if it is not nil
         if sight != nil {
@@ -37,7 +44,16 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
             self.descTextView.text = sight!.desc
             
             focusOn(mapView: mapView, annotation: sight!)
+            
+            self.selectedColor = Int(sight!.color)
+            self.selectedGlyphimage = Int(sight!.glyphimage)
+            
+            self.imageFilename = sight!.imageFilename
+        } else {
+            centerMapOnMelbourne(mapView: mapView)
         }
+        
+        setupMarkerAppearance(selectedColor: selectedColor, selectedGlyphimage: selectedGlyphimage)
         
         // Make text view look like text field
         // https://stackoverflow.com/questions/1824463/how-to-style-uitextview-to-like-rounded-rect-text-field
@@ -50,10 +66,19 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
         // https://stackoverflow.com/questions/26689232/scrollview-and-keyboard-swift/50829480
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        //centerMapOnMelbourne(mapView: mapView)
-        
-        // Set up marker appearance
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+    }
+    
+    func setupMarkerAppearance(selectedColor: Int, selectedGlyphimage: Int) {
         markerImageView.tintColor = MARKER_COLORS[selectedColor]
         glyphimageImageView.image = UIImage(named: GLYPHIMAGES[selectedGlyphimage])
         glyphimageImageView.tintColor = UIColor.white
@@ -88,10 +113,32 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
         self.present(controller, animated: true, completion: nil)
     }
     
-    @IBAction func setLocation(_ sender: Any) {
-    }
-    
     @IBAction func saveSight(_ sender: Any) {
+        guard let name = nameTextField.text, !name.isEmpty else {
+            displayMessage("Name cannot be emtpy", "Error", self)
+            return
+        }
+        guard let desc = descTextView.text, !desc.isEmpty else {
+            displayMessage("Description cannot be emtpy", "Error", self)
+            return
+        }
+        
+        let lat = mapView.centerCoordinate.latitude
+        let lon = mapView.centerCoordinate.longitude
+        
+        if sight != nil {
+            sight!.name = nameTextField.text
+            sight!.desc = descTextView.text
+            sight!.imageFilename = self.imageFilename
+            sight!.color = Int16(self.selectedColor)
+            sight!.glyphimage = Int16(self.selectedGlyphimage)
+            sight!.latitude = lat
+            sight!.longitude = lon
+            
+            databaseController?.saveContext()
+        }
+        
+        navigationController?.popViewController(animated: true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey : Any]) {
@@ -119,5 +166,8 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
             }
             markerImageView.tintColor = MARKER_COLORS[selectedColor]
         }
+    }
+    
+    func onSightListChange(change: DatabaseChange, sights: [Sight]) {
     }
 }

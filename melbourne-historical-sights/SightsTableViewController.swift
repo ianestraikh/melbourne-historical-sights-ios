@@ -169,12 +169,6 @@ class SightsTableViewController: UITableViewController, UISearchResultsUpdating,
         }
     }
     
-    func displayMessage(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sightSegue" {
             let destination = segue.destination as! SightDetailViewController

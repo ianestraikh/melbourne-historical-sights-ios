@@ -22,5 +22,6 @@ protocol DatabaseProtocol: AnyObject {
     func deleteSight(sight: Sight)
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
+    func saveContext()
 }
 

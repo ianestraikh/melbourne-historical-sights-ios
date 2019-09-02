@@ -20,8 +20,15 @@ class SightDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateDetails()
+    }
+    
+    func updateDetails() {
         if let imageFilename = sight!.imageFilename {
             let img = loadImageData(filename: imageFilename)
             imageView.image = img
