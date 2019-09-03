@@ -11,13 +11,13 @@ import MapKit
 
 class SetLocationViewController: UIViewController {
     @IBOutlet weak var setLocationMapView: MKMapView!
-    var coordinate: CLLocationCoordinate2D?
+    weak var editSightViewController: EditSightViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if self.coordinate != nil {
-            let zoomRegion = MKCoordinateRegion(center: self.coordinate!, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        if editSightViewController!.coordinate != nil {
+            let zoomRegion = MKCoordinateRegion(center: editSightViewController!.coordinate!, latitudinalMeters: 1000, longitudinalMeters: 1000)
             setLocationMapView.setRegion(setLocationMapView.regionThatFits(zoomRegion), animated: true)
         } else {
             centerMapOnMelbourne(mapView: setLocationMapView)
@@ -26,9 +26,8 @@ class SetLocationViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated:true);
     }
     
-    @IBAction func setLocation(_ sender: Any) {
-        self.coordinate = setLocationMapView.centerCoordinate
-        
+    @IBAction func done(_ sender: Any) {
+        editSightViewController!.coordinate = setLocationMapView.centerCoordinate
         navigationController?.popViewController(animated: true)
     }
 }

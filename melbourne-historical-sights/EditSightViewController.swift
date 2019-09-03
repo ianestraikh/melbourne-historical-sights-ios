@@ -135,8 +135,8 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
             sight!.imageFilename = self.imageFilename
             sight!.color = Int16(self.selectedColor)
             sight!.glyphimage = Int16(self.selectedGlyphimage)
-            sight!.latitude = Double(coordinate!.latitude)
-            sight!.longitude = Double(coordinate!.latitude)
+            sight!.latitude = coordinate!.latitude
+            sight!.longitude = coordinate!.longitude
             
             databaseController?.saveContext()
         }
@@ -177,11 +177,11 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "setLocationSegue" {
             let destination = segue.destination as! SetLocationViewController
-            destination.coordinate = sender as? CLLocationCoordinate2D
+            destination.editSightViewController = sender as? EditSightViewController
         }
     }
     
     @IBAction func setLocation(_ sender: Any) {
-        performSegue(withIdentifier: "setLocationSegue", sender: coordinate)
+        performSegue(withIdentifier: "setLocationSegue", sender: self)
     }
 }

@@ -167,6 +167,7 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
             
             markerAnnotationView.markerTintColor = MARKER_COLORS[Int(annotation.color)]
             markerAnnotationView.glyphImage = UIImage(named: GLYPHIMAGES[Int(annotation.glyphimage)])
+            markerAnnotationView.glyphTintColor = UIColor.white
             
             // Provide the annotation view's image.
             //        markerAnnotationView.image = image
