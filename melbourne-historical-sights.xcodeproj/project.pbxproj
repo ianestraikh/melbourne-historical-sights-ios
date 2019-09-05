@@ -39,6 +39,7 @@
 		4E9C18372306BF6500D0DE72 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		4E9C183F2306C6AE00D0DE72 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		4EC264582307F08100C6F98A /* DefaultImages */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DefaultImages; path = "melbourne-historical-sights/DefaultImages"; sourceTree = SOURCE_ROOT; };
+		BA24EE18232130740092E275 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BA3EE8FD2320D99F00423630 /* Flinders_Street_Station.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Flinders_Street_Station.gpx; sourceTree = "<group>"; };
 		BA3EE8FE2320D99F00423630 /* St_Patricks_Cathedral.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = St_Patricks_Cathedral.gpx; sourceTree = "<group>"; };
 		BA706D9A2306611000B6470B /* melbourne-historical-sights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "melbourne-historical-sights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +103,7 @@
 		BA706D912306611000B6470B = {
 			isa = PBXGroup;
 			children = (
+				BA24EE18232130740092E275 /* README.md */,
 				BA706D9C2306611000B6470B /* melbourne-historical-sights */,
 				BA706D9B2306611000B6470B /* Products */,
 			);
