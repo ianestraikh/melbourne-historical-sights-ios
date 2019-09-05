@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsControllerDelegate {
     
@@ -17,7 +18,11 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     // Results
     var allSightsFetchedResultsController: NSFetchedResultsController<Sight>?
     
-    override init() {
+    var locationManager: CLLocationManager?
+    
+    init(locationManager: CLLocationManager) {
+        self.locationManager = locationManager
+        
         persistantContainer = NSPersistentContainer(name: "MelbSights")
         persistantContainer.loadPersistentStores() { (description, error) in if let error = error {
             fatalError("Failed to load Core Data stack: \(error)") }
@@ -57,6 +62,9 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         sight.glyphimage = glyphimage
         // This less efficient than batching changes and saving once at end.
         saveContext()
+        
+        locationManager?.startMonitoring(for: sight.geoLocation!)
+        
         return sight
     }
     
@@ -68,6 +76,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     }
     
     func deleteSight(sight: Sight) {
+        locationManager?.stopMonitoring(for: sight.geoLocation!)
+        
         deleteImageFromDocumentDirectory(imageFilename: sight.imageFilename!)
         
         persistantContainer.viewContext.delete(sight)

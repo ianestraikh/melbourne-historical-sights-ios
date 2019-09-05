@@ -31,23 +31,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
         }
         
-        databaseController = CoreDataController()
+        databaseController = CoreDataController(locationManager: locationManager)
         return true
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         let notificationContent = UNMutableNotificationContent()
         // Create its details
-        notificationContent.title = "This is a notification!"
-        notificationContent.subtitle = "FIT5140"
-        notificationContent.body = "The application has sent a notification"
+        notificationContent.title = "Great! You made it!"
+        notificationContent.body = "You are in radius of 50 m around \(region.identifier)"
+        
+        let request = UNNotificationRequest(identifier: "MelbSights", content: notificationContent, trigger: nil)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "This is a notification!"
-        notificationContent.subtitle = "FIT5140"
-        notificationContent.body = "The application has sent a notification"
-    }
+//    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+//        let notificationContent = UNMutableNotificationContent()
+//        notificationContent.title = "You are in radius of 500 m around \(region.identifier)"
+//        notificationContent.body = "Great! You made it!"
+//    }
 }
 

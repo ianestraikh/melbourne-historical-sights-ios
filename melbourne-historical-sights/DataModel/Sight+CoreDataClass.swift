@@ -26,6 +26,6 @@ public class Sight: NSManagedObject, MKAnnotation {
     }
     
     public var geoLocation: CLCircularRegion? {
-        return CLCircularRegion(center: coordinate, radius: 500, identifier: self.name!)
+        return CLCircularRegion(center: coordinate, radius: 50, identifier: self.name!)
     }
 }
