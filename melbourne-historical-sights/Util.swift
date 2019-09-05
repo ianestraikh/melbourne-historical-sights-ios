@@ -73,3 +73,34 @@ func saveImageToDocumentDirectory(data: Data, imageFilename: String) {
         fileManager.createFile(atPath: filePath, contents: data, attributes: nil)
     }
 }
+
+// https://stackoverflow.com/questions/19593641/can-i-change-multiplier-property-for-nslayoutconstraint
+import UIKit
+extension NSLayoutConstraint {
+    /**
+     Change multiplier constraint
+     
+     - parameter multiplier: CGFloat
+     - returns: NSLayoutConstraint
+     */
+    func setMultiplier(multiplier:CGFloat) -> NSLayoutConstraint {
+        
+        NSLayoutConstraint.deactivate([self])
+        
+        let newConstraint = NSLayoutConstraint(
+            item: firstItem as Any,
+            attribute: firstAttribute,
+            relatedBy: relation,
+            toItem: secondItem,
+            attribute: secondAttribute,
+            multiplier: multiplier,
+            constant: constant)
+        
+        newConstraint.priority = priority
+        newConstraint.shouldBeArchived = self.shouldBeArchived
+        newConstraint.identifier = self.identifier
+        
+        NSLayoutConstraint.activate([newConstraint])
+        return newConstraint
+    }
+}

@@ -17,6 +17,7 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var markerImageView: UIImageView!
     @IBOutlet weak var glyphimageImageView: UIImageView!
+    
     @IBOutlet weak var imageViewAspectRatioConstraint: NSLayoutConstraint!
     
     
@@ -57,7 +58,7 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
             
             coordinate = CLLocationCoordinate2D(latitude: sight!.latitude, longitude: sight!.longitude)
         } else {
-            imageViewAspectRatioConstraint.constant = 0
+            imageViewAspectRatioConstraint = imageViewAspectRatioConstraint.setMultiplier(multiplier: 0)
             imageView.layoutIfNeeded()
         }
         
@@ -115,6 +116,10 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func takePhoto(_ sender: Any) {
+        imageView.removeConstraint(imageViewAspectRatioConstraint)
+        imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: imageView, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: 0))
+        imageView.layoutIfNeeded()
+        
         let controller = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             controller.sourceType = .camera
