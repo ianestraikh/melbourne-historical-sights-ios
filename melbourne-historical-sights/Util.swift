@@ -47,3 +47,29 @@ func focusOn(mapView: MKMapView, annotation: MKAnnotation) {
     
     mapView.selectAnnotation(annotation, animated: true)
 }
+
+func deleteImageFromDocumentDirectory(imageFilename: String) {
+    let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+    let url = NSURL(fileURLWithPath: path)
+    if let pathComponent = url.appendingPathComponent(imageFilename) {
+        let filePath = pathComponent.path
+        let fileManager = FileManager.default
+        do {
+            try fileManager.removeItem(atPath: filePath)
+        } catch {
+            print("Error: removing image from document directory")
+            return
+        }
+    }
+}
+
+func saveImageToDocumentDirectory(data: Data, imageFilename: String) {
+    let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+    let url = NSURL(fileURLWithPath: path)
+    
+    if let pathComponent = url.appendingPathComponent(imageFilename) {
+        let filePath = pathComponent.path
+        let fileManager = FileManager.default
+        fileManager.createFile(atPath: filePath, contents: data, attributes: nil)
+    }
+}

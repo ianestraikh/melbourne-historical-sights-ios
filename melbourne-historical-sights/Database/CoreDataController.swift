@@ -68,6 +68,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     }
     
     func deleteSight(sight: Sight) {
+        deleteImageFromDocumentDirectory(imageFilename: sight.imageFilename!)
+        
         persistantContainer.viewContext.delete(sight)
         // This less efficient than batching changes and saving once at end.
         saveContext()
@@ -117,15 +119,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
             do {
                 let data = try Data(contentsOf: imageUrl)
                 let filename = imageUrl.lastPathComponent
-                
-                let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-                let documentUrl = NSURL(fileURLWithPath: path)
-                
-                if let pathComponent = documentUrl.appendingPathComponent("\(filename)") {
-                    let filePath = pathComponent.path
-                    let fileManager = FileManager.default
-                    fileManager.createFile(atPath: filePath, contents: data, attributes: nil)
-                }
+                saveImageToDocumentDirectory(data: data, imageFilename: filename)
             } catch {
                 print("Error: reading images")
                 return

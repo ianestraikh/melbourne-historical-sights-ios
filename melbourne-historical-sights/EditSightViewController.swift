@@ -17,16 +17,21 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var markerImageView: UIImageView!
     @IBOutlet weak var glyphimageImageView: UIImageView!
+    @IBOutlet weak var imageViewAspectRatioConstraint: NSLayoutConstraint!
+    
+    
+    var tempImageView: UIImageView?
     
     var coordinate: CLLocationCoordinate2D?
     
     var selectedGlyphimage = 0
     var selectedColor = 0
-    var imageFilename: String?
     
     weak var sight: Sight?
     
     weak var databaseController: DatabaseProtocol?
+    
+    var isImageChanged: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +46,8 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
 
         // Edit sight if it is not nil
         if sight != nil {
-            if let imageFilename = sight!.imageFilename {
-                let img = loadImageData(filename: imageFilename)
-                imageView.image = img
-            }
+            let img = loadImageData(filename: sight!.imageFilename!)
+            imageView.image = img
             
             self.nameTextField.text = sight!.name
             self.descTextView.text = sight!.desc
@@ -52,10 +55,10 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
             self.selectedColor = Int(sight!.color)
             self.selectedGlyphimage = Int(sight!.glyphimage)
             
-            self.imageFilename = sight!.imageFilename
-            
             coordinate = CLLocationCoordinate2D(latitude: sight!.latitude, longitude: sight!.longitude)
         } else {
+            imageViewAspectRatioConstraint.constant = 0
+            imageView.layoutIfNeeded()
         }
         
         setupMarkerAppearance(selectedColor: selectedColor, selectedGlyphimage: selectedGlyphimage)
@@ -136,20 +139,37 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
         }
         
         if coordinate == nil {
-            displayMessage("Set coordinate first", "Error", self)
+            displayMessage("Set location first", "Error", self)
             return
         }
         
         if sight != nil {
             sight!.name = nameTextField.text
             sight!.desc = descTextView.text
-            sight!.imageFilename = self.imageFilename
             sight!.color = Int16(self.selectedColor)
             sight!.glyphimage = Int16(self.selectedGlyphimage)
             sight!.latitude = coordinate!.latitude
             sight!.longitude = coordinate!.longitude
             
+            if isImageChanged {
+                let image = imageView.image
+                let data = image!.jpegData(compressionQuality: 0.8)!
+                deleteImageFromDocumentDirectory(imageFilename: sight!.imageFilename!)
+                saveImageToDocumentDirectory(data: data, imageFilename: sight!.imageFilename!)
+            }
+            
             databaseController?.saveContext()
+        } else {
+            guard let image = imageView.image else {
+                displayMessage("Cannot save until a photo has been taken!", "Error", self)
+                return
+            }
+            
+            let date = UInt(Date().timeIntervalSince1970)
+            let data = image.jpegData(compressionQuality: 0.8)!
+            saveImageToDocumentDirectory(data: data, imageFilename: "\(date)")
+            
+            let _ = databaseController?.addSight(name: nameTextField.text!, desc: descTextView.text, latitude: coordinate!.latitude, longitude: coordinate!.longitude, imageFilename: "\(date)", color: Int16(self.selectedColor), glyphimage: Int16(self.selectedGlyphimage))
         }
         
         navigationController?.popViewController(animated: true)
@@ -158,6 +178,7 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[.originalImage] as? UIImage {
             imageView.image = pickedImage
+            isImageChanged = true
         }
         dismiss(animated: true, completion: nil)
     }
