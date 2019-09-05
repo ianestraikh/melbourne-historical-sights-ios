@@ -24,4 +24,8 @@ public class Sight: NSManagedObject, MKAnnotation {
     public var subtitle: String? {
         return self.desc
     }
+    
+    public var geoLocation: CLCircularRegion? {
+        return CLCircularRegion(center: coordinate, radius: 500, identifier: self.name!)
+    }
 }

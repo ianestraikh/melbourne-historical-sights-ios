@@ -14,6 +14,8 @@
 		4E9C18382306BF6500D0DE72 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C18372306BF6500D0DE72 /* DatabaseProtocol.swift */; };
 		4E9C18402306C6AE00D0DE72 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C183F2306C6AE00D0DE72 /* CoreDataController.swift */; };
 		4EC264592307F08100C6F98A /* DefaultImages in Resources */ = {isa = PBXBuildFile; fileRef = 4EC264582307F08100C6F98A /* DefaultImages */; };
+		BA3EE8FF2320D99F00423630 /* Flinders_Street_Station.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BA3EE8FD2320D99F00423630 /* Flinders_Street_Station.gpx */; };
+		BA3EE9002320D99F00423630 /* St_Patricks_Cathedral.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BA3EE8FE2320D99F00423630 /* St_Patricks_Cathedral.gpx */; };
 		BA706D9E2306611000B6470B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA706D9D2306611000B6470B /* AppDelegate.swift */; };
 		BA706DA32306611100B6470B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA12306611100B6470B /* Main.storyboard */; };
 		BA706DA52306611900B6470B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA706DA42306611900B6470B /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 		4E9C18372306BF6500D0DE72 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		4E9C183F2306C6AE00D0DE72 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		4EC264582307F08100C6F98A /* DefaultImages */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DefaultImages; path = "melbourne-historical-sights/DefaultImages"; sourceTree = SOURCE_ROOT; };
+		BA3EE8FD2320D99F00423630 /* Flinders_Street_Station.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Flinders_Street_Station.gpx; sourceTree = "<group>"; };
+		BA3EE8FE2320D99F00423630 /* St_Patricks_Cathedral.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = St_Patricks_Cathedral.gpx; sourceTree = "<group>"; };
 		BA706D9A2306611000B6470B /* melbourne-historical-sights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "melbourne-historical-sights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA706D9D2306611000B6470B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA706DA22306611100B6470B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +90,15 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		BA3EE8FC2320D99F00423630 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				BA3EE8FD2320D99F00423630 /* Flinders_Street_Station.gpx */,
+				BA3EE8FE2320D99F00423630 /* St_Patricks_Cathedral.gpx */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		BA706D912306611000B6470B = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +118,7 @@
 		BA706D9C2306611000B6470B /* melbourne-historical-sights */ = {
 			isa = PBXGroup;
 			children = (
+				BA3EE8FC2320D99F00423630 /* SupportingFiles */,
 				4EC264582307F08100C6F98A /* DefaultImages */,
 				4E9C18362306BF4100D0DE72 /* Database */,
 				4E9C182A2306BB8B00D0DE72 /* DataModel */,
@@ -157,6 +171,11 @@
 				TargetAttributes = {
 					BA706D992306611000B6470B = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -184,9 +203,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA706DA82306611900B6470B /* LaunchScreen.storyboard in Resources */,
+				BA3EE9002320D99F00423630 /* St_Patricks_Cathedral.gpx in Resources */,
 				4EC264592307F08100C6F98A /* DefaultImages in Resources */,
 				BA706DA52306611900B6470B /* Assets.xcassets in Resources */,
 				BADC7D0F23078DA70086CFB3 /* DefaultData.plist in Resources */,
+				BA3EE8FF2320D99F00423630 /* Flinders_Street_Station.gpx in Resources */,
 				BA706DA32306611100B6470B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

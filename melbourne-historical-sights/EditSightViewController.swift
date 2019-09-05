@@ -116,9 +116,11 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func takePhoto(_ sender: Any) {
-        imageView.removeConstraint(imageViewAspectRatioConstraint)
-        imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: imageView, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: 0))
-        imageView.layoutIfNeeded()
+        if imageViewAspectRatioConstraint != nil {
+            imageView.removeConstraint(imageViewAspectRatioConstraint)
+            imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: imageView, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: 0))
+            imageView.layoutIfNeeded()
+        }
         
         let controller = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
