@@ -39,6 +39,8 @@ class SightsTableViewController: UITableViewController, UISearchResultsUpdating,
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Sights"
         navigationItem.searchController = searchController
+        searchController.searchBar.barStyle = .black
+        searchController.searchBar.tintColor = .white
         
         // This view controller decides how the search controller is presented.
         definesPresentationContext = true
@@ -115,18 +117,7 @@ class SightsTableViewController: UITableViewController, UISearchResultsUpdating,
             
             sightCell.nameLabel.text = sight.name
             sightCell.descLabel.text = sight.desc
-            if let img = loadImageData(filename: sight.imageFilename!) {
-                // Get thumbnail from image
-                // https://stackoverflow.com/questions/40675640/creating-a-thumbnail-from-uiimage-using-cgimagesourcecreatethumbnailatindex
-    //            let imageData = img.pngData()
-    //            let options = [
-    //                kCGImageSourceCreateThumbnailWithTransform: true,
-    //                kCGImageSourceCreateThumbnailFromImageAlways: true,
-    //                kCGImageSourceThumbnailMaxPixelSize: 100] as CFDictionary
-    //            let source = CGImageSourceCreateWithData(imageData! as CFData, nil)!
-    //            let imageReference = CGImageSourceCreateThumbnailAtIndex(source, 0, options)!
-    //            let thumbnail = UIImage(cgImage: imageReference)
-                
+            if let img = loadImageData(filename: sight.imageFilename!) {                
                 sightCell.imgView.image = img
             }
             return sightCell

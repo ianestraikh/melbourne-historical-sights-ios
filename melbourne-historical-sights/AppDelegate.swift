@@ -20,6 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        let uiProxy = UINavigationBar.appearance()
+        uiProxy.barTintColor = UIColor(red:0.40, green:0.50, blue:0.35, alpha:1.0)
+        uiProxy.tintColor = UIColor.white
+        uiProxy.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        self.window?.tintColor = UIColor(red:0.40, green:0.50, blue:0.35, alpha:1.0)
+        
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.allowsBackgroundLocationUpdates = true

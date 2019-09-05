@@ -58,7 +58,7 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
             
             coordinate = CLLocationCoordinate2D(latitude: sight!.latitude, longitude: sight!.longitude)
         } else {
-            imageViewAspectRatioConstraint = imageViewAspectRatioConstraint.setMultiplier(multiplier: 0)
+            imageView.removeConstraint(imageViewAspectRatioConstraint)
             imageView.layoutIfNeeded()
         }
         
@@ -116,12 +116,6 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func takePhoto(_ sender: Any) {
-        if imageViewAspectRatioConstraint != nil {
-            imageView.removeConstraint(imageViewAspectRatioConstraint)
-            imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: imageView, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: 0))
-            imageView.layoutIfNeeded()
-        }
-        
         let controller = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             controller.sourceType = .camera
@@ -179,6 +173,11 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
         if let pickedImage = info[.originalImage] as? UIImage {
             imageView.image = pickedImage
             isImageChanged = true
+            
+            if imageViewAspectRatioConstraint == nil {
+                imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: imageView, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: 0))
+                imageView.layoutIfNeeded()
+            }
         }
         dismiss(animated: true, completion: nil)
     }
