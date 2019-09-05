@@ -20,8 +20,8 @@ protocol DatabaseProtocol: AnyObject {
     func addSight(name: String, desc: String, latitude: Double, longitude: Double, imageFilename: String?, color: Int16, glyphimage: Int16) -> Sight
     func addImageFilenameToSight(imageFilename: String, sight: Sight) -> Bool
     func deleteSight(sight: Sight)
+    func updateSight(sight: Sight, name: String, desc: String, latitude: Double, longitude: Double, imageFilename: String?, color: Int16, glyphimage: Int16)
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
-    func saveContext()
 }
 

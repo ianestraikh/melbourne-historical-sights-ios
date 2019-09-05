@@ -114,8 +114,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h42-rn-VRU">
-                                            <rect key="frame" x="122" y="32.5" width="221" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="122" y="32.5" width="221" height="14.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -313,7 +313,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to change glyphimage / Long press to change color" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGO-5y-QlZ">
-                                                <rect key="frame" x="24" y="674" width="327" height="14.5"/>
+                                                <rect key="frame" x="16" y="674" width="343" height="14.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -358,7 +358,7 @@
                                             <constraint firstAttribute="trailing" secondItem="a4m-Ew-wTE" secondAttribute="trailing" constant="16" id="1dv-ya-qOo"/>
                                             <constraint firstItem="8NR-qp-oXm" firstAttribute="leading" secondItem="YFT-QW-Hc4" secondAttribute="leading" constant="16" id="2b7-hp-ao0"/>
                                             <constraint firstAttribute="trailing" secondItem="Ggx-ng-quG" secondAttribute="trailing" constant="16" id="3Oc-sJ-BpZ"/>
-                                            <constraint firstAttribute="trailing" secondItem="lGO-5y-QlZ" secondAttribute="trailing" constant="24" id="4H9-QX-NXV"/>
+                                            <constraint firstAttribute="trailing" secondItem="lGO-5y-QlZ" secondAttribute="trailing" constant="16" id="4H9-QX-NXV"/>
                                             <constraint firstAttribute="trailing" secondItem="8NR-qp-oXm" secondAttribute="trailing" constant="16" id="7xz-Uw-z1K"/>
                                             <constraint firstItem="F0I-oJ-rEV" firstAttribute="leading" secondItem="YFT-QW-Hc4" secondAttribute="leading" constant="16" id="8FC-eb-CjC"/>
                                             <constraint firstItem="PEq-mT-de7" firstAttribute="leading" secondItem="YFT-QW-Hc4" secondAttribute="leading" constant="16" id="8p9-zc-kIp"/>
@@ -368,7 +368,7 @@
                                             <constraint firstAttribute="trailing" secondItem="F0I-oJ-rEV" secondAttribute="trailing" constant="16" id="NEy-1M-o7f"/>
                                             <constraint firstAttribute="trailing" secondItem="Q44-W1-J4D" secondAttribute="trailing" constant="16" id="OkL-gs-mhG"/>
                                             <constraint firstItem="lGO-5y-QlZ" firstAttribute="top" secondItem="a4m-Ew-wTE" secondAttribute="bottom" constant="4" id="SyB-oY-x0q"/>
-                                            <constraint firstItem="lGO-5y-QlZ" firstAttribute="leading" secondItem="YFT-QW-Hc4" secondAttribute="leading" constant="24" id="TWE-T6-EfO"/>
+                                            <constraint firstItem="lGO-5y-QlZ" firstAttribute="leading" secondItem="YFT-QW-Hc4" secondAttribute="leading" constant="16" id="TWE-T6-EfO"/>
                                             <constraint firstItem="PEq-mT-de7" firstAttribute="top" secondItem="M6b-Yx-OCq" secondAttribute="bottom" constant="8" id="Vmr-8e-FtK"/>
                                             <constraint firstAttribute="trailing" secondItem="PEq-mT-de7" secondAttribute="trailing" constant="16" id="WWe-S2-4cQ"/>
                                             <constraint firstAttribute="trailing" secondItem="FhC-s4-RNg" secondAttribute="trailing" constant="16" id="Ww3-jB-Y3S"/>

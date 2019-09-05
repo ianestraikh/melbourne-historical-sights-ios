@@ -151,12 +151,7 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
         }
         
         if sight != nil {
-            sight!.name = nameTextField.text
-            sight!.desc = descTextView.text
-            sight!.color = Int16(self.selectedColor)
-            sight!.glyphimage = Int16(self.selectedGlyphimage)
-            sight!.latitude = coordinate!.latitude
-            sight!.longitude = coordinate!.longitude
+            databaseController?.updateSight(sight: sight!, name: nameTextField.text!, desc: descTextView.text, latitude: coordinate!.latitude, longitude: coordinate!.longitude, imageFilename: nil, color: Int16(self.selectedColor), glyphimage: Int16(self.selectedGlyphimage))
             
             if isImageChanged {
                 let image = imageView.image
@@ -164,8 +159,6 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
                 deleteImageFromDocumentDirectory(imageFilename: sight!.imageFilename!)
                 saveImageToDocumentDirectory(data: data, imageFilename: sight!.imageFilename!)
             }
-            
-            databaseController?.saveContext()
         } else {
             guard let image = imageView.image else {
                 displayMessage("Cannot save until a photo has been taken!", "Error", self)

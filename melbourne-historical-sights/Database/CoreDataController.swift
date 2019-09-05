@@ -11,7 +11,6 @@ import CoreData
 import CoreLocation
 
 class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsControllerDelegate {
-    
     var listeners = MulticastDelegate<DatabaseListener>()
     
     var persistantContainer: NSPersistentContainer
@@ -83,6 +82,24 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         persistantContainer.viewContext.delete(sight)
         // This less efficient than batching changes and saving once at end.
         saveContext()
+    }
+    
+    func updateSight(sight: Sight, name: String, desc: String, latitude: Double, longitude: Double, imageFilename: String?, color: Int16, glyphimage: Int16) {
+        locationManager?.stopMonitoring(for: sight.geoLocation!)
+        
+        sight.name = name
+        sight.desc = desc
+        if let imageFilename = imageFilename {
+            sight.imageFilename = imageFilename
+        }
+        sight.latitude = latitude
+        sight.longitude = longitude
+        sight.color = color
+        sight.glyphimage = glyphimage
+        
+        saveContext()
+        
+        locationManager?.startMonitoring(for: sight.geoLocation!)
     }
 
     
