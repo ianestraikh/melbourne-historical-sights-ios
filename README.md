@@ -1,16 +1,16 @@
 # Melbourne Historical Sights
 
 
-## Home Screen
+### Home Screen
 
-## Sight List Screen
+### Sight List Screen
 
-## Sight Detail Screen
+### Sight Detail Screen
 
-## Add Sight Screen
+### Add Sight Screen
 
 
-## Other resources used in the project:
+### Other resources used in the project:
  - Descriptions of default sights taken from [https://www.visitvictoria.com/Regions/Melbourne/Things-to-do/History-and-heritage](www.visitvictoria.com) and wikipedia.
 
  - Images of default sights taken from correspoding wikipedia pages.

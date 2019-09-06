@@ -43,18 +43,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         let notificationContent = UNMutableNotificationContent()
-        // Create its details
         notificationContent.title = "Great! You made it!"
         notificationContent.body = "You are in radius of 50 m around \(region.identifier)"
         
         let request = UNNotificationRequest(identifier: "MelbSights", content: notificationContent, trigger: nil)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
+        if let view = self.window?.rootViewController {
+            displayMessage("You are in radius of 50 m around \(region.identifier)", "Great! You made it!", view)
+        }
     }
     
-//    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-//        let notificationContent = UNMutableNotificationContent()
-//        notificationContent.title = "You are in radius of 500 m around \(region.identifier)"
-//        notificationContent.body = "Great! You made it!"
-//    }
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "You left radius of 50 m around \(region.identifier)"
+        notificationContent.body = "Oops you are leaving!"
+        
+        let request = UNNotificationRequest(identifier: "MelbSights", content: notificationContent, trigger: nil)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
+        if let view = self.window?.rootViewController {
+            displayMessage("You left radius of 50 m around \(region.identifier)", "Oops, you are leaving!", view)
+        }
+    }
 }
 
