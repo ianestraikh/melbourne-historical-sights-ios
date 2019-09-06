@@ -135,12 +135,12 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     
     @IBAction func saveSight(_ sender: Any) {
         // Validation if name is empty
-        guard let name = nameTextField.text, !name.isEmpty else {
+        guard let name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !name.isEmpty else {
             displayMessage("Name cannot be emtpy", "Error", self)
             return
         }
         // Validatoin if description is empty
-        guard let desc = descTextView.text, !desc.isEmpty else {
+        guard let desc = descTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines), !desc.isEmpty else {
             displayMessage("Description cannot be emtpy", "Error", self)
             return
         }
