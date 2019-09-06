@@ -11,10 +11,10 @@ import MapKit
 
 class SightDetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var desc: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var locationLabel: UILabel!
     
     weak var sight: Sight?
     
@@ -29,23 +29,15 @@ class SightDetailViewController: UIViewController {
     }
     
     func updateDetails() {
-        mapView.removeAnnotations(mapView.annotations)
-        
         if let imageFilename = sight!.imageFilename {
             let img = loadImageData(filename: imageFilename)
             imageView.image = img
         }
         
-        self.name.text = sight!.name
-        self.desc.text = sight!.desc
+        self.nameLabel.text = sight!.name
+        self.descLabel.text = sight!.desc
         
-        // https://stackoverflow.com/questions/9891926/quickly-adding-single-pin-to-mkmapview
-        let annotation = MKPointAnnotation()
-        let centerCoordinate = CLLocationCoordinate2D(latitude: sight!.latitude, longitude: sight!.longitude)
-        annotation.coordinate = centerCoordinate
-        annotation.title = sight!.name
-        mapView.addAnnotation(annotation)
-        focusOn(mapView: mapView, annotation: annotation)
+        getAddressFromLatLon(lat: sight!.latitude, lon: sight!.longitude)
     }
     
     @IBAction func editSight(_ sender: Any) {
@@ -57,5 +49,49 @@ class SightDetailViewController: UIViewController {
             let destination = segue.destination as! EditSightViewController
             destination.sight = sender as? Sight
         }
+    }
+    
+    // get address by lat and long
+    // https://stackoverflow.com/questions/41358423/swift-generate-an-address-format-from-reverse-geocoding
+    func getAddressFromLatLon(lat: Double, lon: Double) {
+        var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
+        let ceo: CLGeocoder = CLGeocoder()
+        center.latitude = lat
+        center.longitude = lon
+        
+        let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+        
+        ceo.reverseGeocodeLocation(loc, completionHandler:
+            {(placemarks, error) in
+                if (error != nil)
+                {
+                    print("reverse geodcode fail: \(error!.localizedDescription)")
+                }
+                let pm = placemarks! as [CLPlacemark]
+                
+                if pm.count > 0 {
+                    let pm = placemarks![0]
+                    var addressString : String = ""
+                    if pm.subLocality != nil {
+                        addressString = addressString + pm.subLocality! + ", "
+                    }
+                    if pm.thoroughfare != nil {
+                        addressString = addressString + pm.thoroughfare! + ", "
+                    }
+                    if pm.locality != nil {
+                        addressString = addressString + pm.locality! + ", "
+                    }
+                    if pm.country != nil {
+                        addressString = addressString + pm.country! + ", "
+                    }
+                    if pm.postalCode != nil {
+                        addressString = addressString + pm.postalCode! + " "
+                    }
+                    
+                    
+                    self.locationLabel.text = addressString
+                }
+        })
+        
     }
 }
