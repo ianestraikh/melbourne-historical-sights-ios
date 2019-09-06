@@ -2,7 +2,7 @@
 //  CoreDataController.swift
 //  melbourne-historical-sights
 //
-//  Created by fit5140 on 16/8/19.
+//  Created by Ian Estraikh on 16/8/19.
 //  Copyright © 2019 Ian Estraikh. All rights reserved.
 //
 
@@ -29,7 +29,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         
         super.init()
         
-        // Check if app is launched first time
+        // Check if the app is launched first time
         // https://stackoverflow.com/questions/9964371/how-to-detect-first-time-app-launch-on-an-iphone
         let defaults = UserDefaults.standard
         if defaults.string(forKey: "isAppAlreadyLaunchedOnce") == nil {
@@ -59,7 +59,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         sight.longitude = longitude
         sight.color = color
         sight.glyphimage = glyphimage
-        // This less efficient than batching changes and saving once at end.
+
         saveContext()
         
         locationManager?.startMonitoring(for: sight.geoLocation!)
@@ -69,7 +69,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     func addImageFilenameToSight(imageFilename: String, sight: Sight) -> Bool {
         sight.imageFilename = imageFilename
-        // This less efficient than batching changes and saving once at end.
+
         saveContext()
         return true
     }
@@ -80,7 +80,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         deleteImageFromDocumentDirectory(imageFilename: sight.imageFilename!)
         
         persistantContainer.viewContext.delete(sight)
-        // This less efficient than batching changes and saving once at end.
+
         saveContext()
     }
     

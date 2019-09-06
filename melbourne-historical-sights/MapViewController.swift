@@ -28,6 +28,7 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(Sight.self))
         mapView.delegate = self
         
+        mapView.showsUserLocation = true;
     }
     
     // MARK: - Database Listener
@@ -55,8 +56,8 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         mapView.addAnnotations(sights)
         
         if sightToFocus != nil {
-            // An ugly workaround to prevent the marker from hovering above the callout when the annotation selected second time consequentally
-            // move region to different one than it was before
+            // An ugly workaround to prevent the marker from hovering above the callout when the annotation selected second time consequently
+            // center on different region than one was before
             centerMapOnMelbourne(mapView: mapView)
             
             focusOn(mapView: mapView, annotation: sightToFocus!)
@@ -77,16 +78,12 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
     // https://developer.apple.com/documentation/mapkit/mapkit_annotations/annotating_a_map_with_custom_data
     /// Called whent he user taps the disclosure button in the bridge callout.
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
-        // This illustrates how to detect which annotation type was tapped on for its callout.
         if let annotation = view.annotation as! Sight? {
             performSegue(withIdentifier: "sightDetailSegue", sender: annotation)
         }
     }
     
     // https://developer.apple.com/documentation/mapkit/mapkit_annotations/annotating_a_map_with_custom_data
-    /// The map view asks `mapView(_:viewFor:)` for an appropiate annotation view for a specific annotation.
-    /// - Tag: CreateAnnotationViews
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         guard !annotation.isKind(of: MKUserLocation.self) else {
@@ -97,67 +94,14 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
         var annotationView: MKAnnotationView?
         
         if let annotation = annotation as? Sight {
-            annotationView = setupAnnotationView2(for: annotation, on: mapView)
+            annotationView = setupAnnotationView(for: annotation, on: mapView)
         }
-        
+
         return annotationView
     }
     
     // https://developer.apple.com/documentation/mapkit/mapkit_annotations/annotating_a_map_with_custom_data
-    /// Create an annotation view for and add an image and desc to the callout.
     private func setupAnnotationView(for annotation: Sight, on mapView: MKMapView) -> MKAnnotationView {
-        let identifier = NSStringFromClass(Sight.self)
-        let view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier, for: annotation)
-        if let markerAnnotationView = view as? MKMarkerAnnotationView {
-            markerAnnotationView.animatesWhenAdded = true
-            markerAnnotationView.canShowCallout = true
-            markerAnnotationView.markerTintColor = UIColor.blue
-            markerAnnotationView.displayPriority = .required
-            
-            let img = loadImageData(filename: annotation.imageFilename!)
-            let imgView: UIImageView = {
-                let imgView = UIImageView(image: img)
-                let widthConstraint = NSLayoutConstraint(item: imgView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: CGFloat(1), constant: CGFloat(100))
-                let heightConstraint = NSLayoutConstraint(item: imgView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: CGFloat(1), constant: CGFloat(100))
-                imgView.addConstraints([widthConstraint, heightConstraint])
-                imgView.contentMode = .scaleAspectFill
-                
-                return imgView
-            }()
-            
-            let descLabel: UILabel = {
-                let label = UILabel(frame: .zero)
-                label.text = annotation.desc
-                label.numberOfLines = 5
-                label.font = UIFont.preferredFont(forTextStyle: .caption1)
-                let widthConstraint = NSLayoutConstraint(item: label, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: CGFloat(1), constant: CGFloat(200))
-                label.addConstraint(widthConstraint)
-                
-                return label
-            }()
-            
-            let stackView: UIStackView = {
-                let stackView = UIStackView(arrangedSubviews: [imgView, descLabel])
-                stackView.translatesAutoresizingMaskIntoConstraints = false
-                stackView.axis = .horizontal
-                stackView.alignment = .top
-                stackView.spacing = CGFloat(10)
-                
-                return stackView
-            }()
-            
-            markerAnnotationView.detailCalloutAccessoryView = stackView
-            
-            let rightButton = UIButton(type: .detailDisclosure)
-            markerAnnotationView.rightCalloutAccessoryView = rightButton
-        }
-        
-        return view
-    }
-
-    // https://developer.apple.com/documentation/mapkit/mapkit_annotations/annotating_a_map_with_custom_data
-    // without using detailCalloutAccessoryView
-    private func setupAnnotationView2(for annotation: Sight, on mapView: MKMapView) -> MKAnnotationView {
         let reuseIdentifier = NSStringFromClass(Sight.self)
         let view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier, for: annotation)
         if let markerAnnotationView = view as? MKMarkerAnnotationView {
@@ -170,7 +114,6 @@ class MapViewController: UIViewController, DatabaseListener, MKMapViewDelegate {
             markerAnnotationView.glyphTintColor = UIColor.white
             
             // Provide the annotation view's image.
-            //        markerAnnotationView.image = image
             let img = loadImageData(filename: annotation.imageFilename!)
             let imgView: UIImageView = {
                 let height = markerAnnotationView.frame.height + markerAnnotationView.layoutMargins.top + markerAnnotationView.layoutMargins.bottom

@@ -22,7 +22,7 @@ class SetLocationViewController: UIViewController {
         } else {
             centerMapOnMelbourne(mapView: setLocationMapView)
         }
-        
+        setLocationMapView.showsUserLocation = true;
         self.navigationItem.setHidesBackButton(true, animated:true);
     }
     

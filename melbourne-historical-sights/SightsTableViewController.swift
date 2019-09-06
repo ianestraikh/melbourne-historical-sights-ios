@@ -2,7 +2,7 @@
 //  SightsTableViewController.swift
 //  melbourne-historical-sights
 //
-//  Created by fit5140 on 16/8/19.
+//  Created by Ian Estraikh on 16/8/19.
 //  Copyright © 2019 Ian Estraikh. All rights reserved.
 //
 
@@ -46,7 +46,7 @@ class SightsTableViewController: UITableViewController, UISearchResultsUpdating,
         definesPresentationContext = true
     }
     
-    
+    // MARK: - Database Listener
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
@@ -97,7 +97,6 @@ class SightsTableViewController: UITableViewController, UISearchResultsUpdating,
         }
     }
     
-    // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }

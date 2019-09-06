@@ -5,6 +5,8 @@
 //  Created by Ian Estraikh on 19/8/19.
 //  Copyright © 2019 Ian Estraikh. All rights reserved.
 //
+// This file contains CONSTANTS and methods used throughout different classes
+
 import UIKit
 import MapKit
 

@@ -58,6 +58,8 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
             
             coordinate = CLLocationCoordinate2D(latitude: sight!.latitude, longitude: sight!.longitude)
         } else {
+            // When adding a new sight, an image is not presented in imageView
+            // so remove aspect ratio constraint to remove empty space between takePhoto button and parent view top
             imageView.removeConstraint(imageViewAspectRatioConstraint)
             imageView.layoutIfNeeded()
         }
@@ -99,6 +101,7 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
         glyphimageImageView.tintColor = UIColor.white
     }
     
+    // Prevent keyboard overlapping text field
     // https://stackoverflow.com/questions/26689232/scrollview-and-keyboard-swift/50829480
     @objc func keyboardWillShow(notification:NSNotification){
         var userInfo = notification.userInfo!
@@ -110,6 +113,8 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
         scrollView.contentInset = contentInset
     }
     
+    // Prevent keyboard overlapping text field
+    // https://stackoverflow.com/questions/26689232/scrollview-and-keyboard-swift/50829480
     @objc func keyboardWillHide(notification:NSNotification){
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInset
@@ -129,21 +134,23 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func saveSight(_ sender: Any) {
-        
+        // Validation if name is empty
         guard let name = nameTextField.text, !name.isEmpty else {
             displayMessage("Name cannot be emtpy", "Error", self)
             return
         }
+        // Validatoin if description is empty
         guard let desc = descTextView.text, !desc.isEmpty else {
             displayMessage("Description cannot be emtpy", "Error", self)
             return
         }
-        
+        // Validation if location is not set
         if coordinate == nil {
             displayMessage("Set location first", "Error", self)
             return
         }
         
+        // Edit mode when Sight is passed to the controller
         if sight != nil {
             databaseController?.updateSight(sight: sight!, name: nameTextField.text!, desc: descTextView.text, latitude: coordinate!.latitude, longitude: coordinate!.longitude, imageFilename: nil, color: Int16(self.selectedColor), glyphimage: Int16(self.selectedGlyphimage))
             
@@ -153,6 +160,7 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
                 deleteImageFromDocumentDirectory(imageFilename: sight!.imageFilename!)
                 saveImageToDocumentDirectory(data: data, imageFilename: sight!.imageFilename!)
             }
+        // Add new sight mode
         } else {
             guard let image = imageView.image else {
                 displayMessage("Cannot save until a photo has been taken!", "Error", self)
@@ -165,7 +173,6 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
             
             let _ = databaseController?.addSight(name: nameTextField.text!, desc: descTextView.text, latitude: coordinate!.latitude, longitude: coordinate!.longitude, imageFilename: "\(date)", color: Int16(self.selectedColor), glyphimage: Int16(self.selectedGlyphimage))
         }
-        
         navigationController?.popViewController(animated: true)
     }
     
@@ -202,9 +209,6 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
         }
     }
     
-    func onSightListChange(change: DatabaseChange, sights: [Sight]) {
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "setLocationSegue" {
             let destination = segue.destination as! SetLocationViewController
@@ -214,5 +218,8 @@ class EditSightViewController: UIViewController, UIImagePickerControllerDelegate
     
     @IBAction func setLocation(_ sender: Any) {
         performSegue(withIdentifier: "setLocationSegue", sender: self)
+    }
+    
+    func onSightListChange(change: DatabaseChange, sights: [Sight]) {
     }
 }
