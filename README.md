@@ -1,6 +1,8 @@
 # Melbourne Historical Sights
 
-The application contains information about Melbourne historical sights, allows to add new sights and notifies the user in background when they are close to a sight. 
+[FIT5140](https://www3.monash.edu/pubs/2019handbooks/units/FIT5140.html) Advanced mobile systems assignment
+
+The application contains information about Melbourne historical sights, allows to add new sights and notifies the user in the background when they are close to a sight. 
 
 
 ### Home Screen - MapViewController
@@ -13,17 +15,17 @@ The application contains information about Melbourne historical sights, allows t
 ### Sight List Screen - SightsTableViewController
 * The table view shows a list of sights.
 * Tapping on a sight takes the user back to the map and focuses on the sight.
-* Sights can be searched, search bar appears by swiping down.
-* Each sight can be deleted by swiping left and clicking **Delete** button.
+* The sights can be searched, the search bar appears by swiping down.
+* Each sight can be deleted by swiping left and clicking the **Delete** button.
 * The list can be sorted by A-Z or Z-A alphabetical orders.
-* **+** button on the navigation bar leads to EditSightViewController.
+* The **+** button on the navigation bar leads to EditSightViewController.
 
 ### Sight Detail Screen - SightDetailViewController
 * This screen displays the image, title, description and location of a sight.
-* **Edit** button on the navigation bar lead to EditSightViewController.
+* The **Edit** button on the navigation bar leads to EditSightViewController.
 
 ### Add Sight Screen - EditSightViewController
-* The screen allows user to add/change the image, title, description, marker and set location.
+* The screen allows the user to add/change the image, title, description, marker and set location.
 
 ## Acknowledgement
 Most of the solutions in the application are derived from the [FIT5140: Advanced mobile systems](http://www.monash.edu/pubs/handbooks/units/FIT5140.html) tutorial materials. The other external resources, the code is used from, are cited as links in comments.
@@ -38,5 +40,13 @@ Most of the solutions in the application are derived from the [FIT5140: Advanced
  - Location pin icon in SightDetialViewController made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com).
  
  - App icon derived from [image](https://www.shutterstock.com/image-vector/australia-melbourne-cite-landscape-modern-panorama-638907502) made by [nastyrekh](https://www.shutterstock.com/g/nastyrekh).
+</br>
 
-
+<p align="center">
+<img src="images/1_map.png?raw=true" width="30%">
+<img src="images/2_map.png?raw=true" width="30%">
+<img src="images/3_sights.png?raw=true" width="30%">
+<img src="images/4_sight.png?raw=true" width="30%">
+<img src="images/5_sight_edit.png?raw=true" width="30%">
+<img src="images/6_add_new.png?raw=true" width="30%">
+</p>
